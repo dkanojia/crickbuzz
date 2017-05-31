@@ -99,7 +99,10 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php  echo 'http://'.getenv('HTTP_HOST'); ?>/cric/create_team"><i class="fa fa-circle-o"></i>Create Team </a></li>
-        
+        <li>
+              <a href="<?php  echo 'http://'.getenv('HTTP_HOST'); ?>/cric/add_players"><i class="fa fa-circle-o"></i> Add Players 
+              </a>
+           </li>
 		   <li>
               <a href="<?php  echo 'http://'.getenv('HTTP_HOST'); ?>/cric/view_team"><i class="fa fa-circle-o"></i> View Team 
               </a>

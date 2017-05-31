@@ -27,11 +27,11 @@ class Team extends CI_Controller {
 		$this->team_model->ajax_search_mobile($mobile);
 	}
 	
-	public function add_players($id)
+	public function add_players()
 	{
 		$this->load->model('team_model');
 		$data['player_list'] = $this->team_model->add_players();
-		$data['team_list'] = $this->team_model->getTeamPlayer($id);
+		// $data['team_list'] = $this->team_model->getTeamPlayer($id);
 		
 		$this->load->view('header');
 		$this->load->view('sidebar');

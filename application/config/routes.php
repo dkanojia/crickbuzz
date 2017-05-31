@@ -17,12 +17,17 @@ $route['delete_tour/(:num)'] = 'tour/delete1/$1';
 
 		/** team **/
 $route['create_team'] = 'team/create';
+$route['add_players'] = 'team/add_players';
+$route['create_team_submit'] = 'team/create_team_submit';
+$route['view_team'] = 'team/view';
+
+// $route['create_team'] = 'team/create';
 $route['aj_remove_player_from_team/(:num)/(:num)'] = 'team/aj_remove_player_from_team/$1/$2';
 $route['add_team_player/(:num)/(:num)'] = 'team/aj_add_team_player/$1/$2';
 $route['requst_already_pl_ls/(:num)'] = 'team/teamAlreadyP/$1';
 $route['add_team_players/(:num)'] = 'team/add_players/$1';
-$route['create_team_submit'] = 'team/create_team_submit';
-$route['view_team'] = 'team/view';
+// $route['create_team_submit'] = 'team/create_team_submit';
+// $route['view_team'] = 'team/view';
 
 
 

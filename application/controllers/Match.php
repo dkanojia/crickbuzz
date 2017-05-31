@@ -17,6 +17,8 @@ class Match extends CI_Controller {
 		$data['team1_id'] = $this->input->post('team1');
 		$data['team2_id'] = $this->input->post('team2');
 		
+		$data['title'] = $this->input->post('match_title');
+		
 		$day = $this->input->post('day');
 		$month = $this->input->post('month');
 		$year = $this->input->post('year');
