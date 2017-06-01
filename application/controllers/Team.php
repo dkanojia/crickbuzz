@@ -31,7 +31,7 @@ class Team extends CI_Controller {
 	{
 		$this->load->model('team_model');
 		$data['player_list'] = $this->team_model->add_players();
-		// $data['team_list'] = $this->team_model->getTeamPlayer($id);
+		$data['team_list'] = $this->team_model->getAllTeamList();
 		
 		$this->load->view('header');
 		$this->load->view('sidebar');

@@ -110,7 +110,7 @@ class Team_model extends CI_Model {
 		$str = '';
 		$ii = 1;
 		foreach($data as $value){
-			$str = $str . '<tr><td>'.$ii.'</td><td><img class="pprofile" src = "'.base_url().'/public/profile_img/'.$value['name'].'/'.$value['profile_url'].'"></td><td>'.$value['name'].'</td><td>'.$value['mobile'].'</td><td>'.$value['email'].'</td><td>'.$value['city'].'</td><td>'.$value['state'].'</td><td>'.$value['role'].'</td><td><button onclick= "make_dis(this.id)" id = "a'.$value['pid'].'" class = "btn btn-success btn-xs">Add</button><button onclick= "make_dis(this.id)" id = "c'.$value['pid'].'" class = "btn btn-info btn-xs">Make Caption</button><button onclick= "make_dis(this.id)" id = "v'.$value['pid'].'" class = "btn btn-warning btn-xs">Make Vice Caption</button></td></tr>';
+			$str = $str . '<tr><td>'.$ii.'</td><td><img "50px" width = "50px" class="pprofile" src = "'.base_url().'/public/profile_img/'.$value['name'].'/'.$value['profile_url'].'"></td><td>'.$value['name'].'</td><td>'.$value['mobile'].'</td><td>'.$value['email'].'</td><td>'.$value['city'].'</td><td>'.$value['state'].'</td><td>'.$value['role'].'</td><td><button onclick= "make_dis(this.id)" id = "a'.$value['pid'].'" class = "btn btn-success btn-xs">Add</button><button onclick= "make_dis(this.id)" id = "c'.$value['pid'].'" class = "btn btn-info btn-xs">Make Caption</button><button onclick= "make_dis(this.id)" id = "v'.$value['pid'].'" class = "btn btn-warning btn-xs">Make Vice Caption</button></td></tr>';
 			$ii++;
 		}
 
