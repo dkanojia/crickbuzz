@@ -78,7 +78,8 @@
 						
 						<?php
 							foreach($teams as $values){
-								echo '<option values = "'.$values['tid'].'" >'.$values['team_name'].'</option>';
+								echo '<option id = "'.$values['tid'].'" value = "'.$values['tid'].'" >'.$values['team_name'].'</option>';
+								// echo '<option values = "'.$values['tid'].'" >'.$values['team_name'].'</option>';
 							}
 						
 						?>
@@ -96,7 +97,8 @@
 						<option>
 							<?php
 							foreach($teams as $values){
-								echo '<option values = "'.$values['tid'].'" >'.$values['team_name'].'</option>';
+								echo '<option id = "'.$values['tid'].'" value = "'.$values['tid'].'" >'.$values['team_name'].'</option>';
+								// echo '<option values = "'.$values['tid'].'" >'.$values['team_name'].'</option>';
 							}
 						
 						?>

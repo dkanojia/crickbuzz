@@ -14,6 +14,7 @@ class Match extends CI_Controller {
 	{
 		$data['tournament_id'] = $this->input->post('tour_name');
 		if(isset($data['tournament_id'])){}else{$data['tournament_id'] = '';}
+		
 		$data['team1_id'] = $this->input->post('team1');
 		$data['team2_id'] = $this->input->post('team2');
 		
@@ -46,12 +47,6 @@ class Match extends CI_Controller {
 		$this->load->model('player_model');
 		$city11 =  $this->player_model->cityByCode($city);
 		$data['city'] = $city11[0]['name'];
-		
-		
-		
-		
-		
-		
 		
 		
 		$data['place'] = $city.','.$state.','.$country;
