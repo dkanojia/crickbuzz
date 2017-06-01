@@ -66,6 +66,7 @@
       <tr style = "background-color: rgba(0, 0, 0, 0.6); color: #fff;">
        
         <th>#</th>
+        <th>IMAGE</th>
         <th>NAME</th>
         <th>ROLE</th>
         <th>DOB</th>
@@ -83,6 +84,7 @@
 	   <tfoot>
       <tr style = "background-color: rgba(0, 0, 0, 0.6); color: #fff;">
         <th>#</th>
+        <th>IMAGE</th>
         <th>NAME</th>
         <th>ROLE</th>
         <th>DOB</th>

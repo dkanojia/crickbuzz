@@ -87,7 +87,7 @@ class Player_model extends CI_Model {
 		$str  = '';
 		$ii = 1;
 		foreach($data as $key => $value){
-			$str = $str . '<tr><td>'.$ii.'</td><td>'.$value['name'].'</td><td>'.$value['role'].'</td><td>'.$value['dob'].'</td><td>'.$value['mobile'].'</td><td>'.$value['city'].'</td><td>'.$value['bat'].'</td><td>'.$value['bowler'].'</td><td>'.$value['team'].'</td><td><a href = "edit_player/'.$value['pid'].'"><button class ="btn btn-warning btn-xs">Edit</button></a><a href = "delete_player/'.$value['pid'].'"><button class ="btn btn-danger btn-xs">Delete</button></a></td></tr>';
+			$str = $str . '<tr><td>'.$ii.'</td><td><img "50px" width = "50px" class="pprofile" src = "'.base_url().'/public/profile_img/'.$value['name'].'/'.$value['profile_url'].'"></td><td>'.$value['name'].'</td><td>'.$value['role'].'</td><td>'.$value['dob'].'</td><td>'.$value['mobile'].'</td><td>'.$value['city'].'</td><td>'.$value['bat'].'</td><td>'.$value['bowler'].'</td><td>'.$value['team'].'</td><td><a href = "edit_player/'.$value['pid'].'"><button class ="btn btn-warning btn-xs">Edit</button></a><a href = "delete_player/'.$value['pid'].'"><button class ="btn btn-danger btn-xs">Delete</button></a></td></tr>';
 			$ii++;
 		}
 		 //$str;
@@ -159,11 +159,11 @@ class Player_model extends CI_Model {
 	function edit_detail($id , $data){
 		
 		$name = $data['name'];
-		$batingStyle = $data['batingStyle'];
+		$battingStyle = $data['battingStyle'];
 		$bowlingStyle = $data['bowlingStyle'];
 		$this->db->where('pid', $id);
 		$this->db->set('name' , $name);
-		$this->db->set('bat' , $batingStyle);
+		$this->db->set('bat' , $battingStyle);
 		$this->db->set('bowler' , $bowlingStyle);
 		$this->db->update('players');    
 		    

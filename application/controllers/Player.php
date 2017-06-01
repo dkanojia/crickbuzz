@@ -32,12 +32,31 @@ class Player extends CI_Controller {
 	public function edit_player_detail1($id)
 	{
 		 //echo '<script>alert("called")</script>';
-		 $data['country'] =  $this->input->post('country');
-		 $data['state'] =  $this->input->post('state');
-		 $data['city'] =  $this->input->post('city');
+		 // $data['country'] =  $this->input->post('country');
+		 // $data['state'] =  $this->input->post('state');
+		 // $data['city'] =  $this->input->post('city');
+		
+		$country=  $this->input->post('country');
+		$this->load->model('player_model');
+
+	    $country11 =  $this->player_model->countryByCode($country);
+		$data['country'] = $country11[0]['name'];
+	    $state =  $this->input->post('state');
+		$this->load->model('player_model');
+
+	    $state11 =  $this->player_model->stateByCode($state);
+		$data['state'] = $state11[0]['name'];
+		
+	    $city =  $this->input->post('city');
+		$this->load->model('player_model');
+	    $city11 =  $this->player_model->cityByCode($city);
+		$data['city'] = $city11[0]['name'];
+		 
 		 $data['mobile'] =  $this->input->post('mobile');
 		 $data['email'] =  $this->input->post('email');
 		 $this->load->model('player_model');
+
+
 		 
 		 $this->player_model->edit_detail1($id , $data);
 		 $this->load->view('header');
@@ -53,7 +72,7 @@ class Player extends CI_Controller {
 	{
 		
 		 $data['name'] =  $this->input->post('name');
-		 $data['batingStyle'] =  $this->input->post('batingStyle');
+		 $data['battingStyle'] =  $this->input->post('battingStyle');
 		 $data['bowlingStyle'] =  $this->input->post('bowlingStyle');
 		 //echo '<script>alert("called")</script>';
 		 $this->load->model('player_model');
@@ -71,9 +90,9 @@ class Player extends CI_Controller {
 	
 	public function edit_photo($id , $name)
 	{
-		//echo '<script>alert("called")</script>';
 		$name = urldecode($name);
 		$name = stripcslashes($name);
+		// echo '<script>alert($name)</script>';
 		$photo_url =  $_FILES['userfile']['name'];
 		//folder create if not exist 
 	$dir_ck = "./public/profile_img/".$name;
@@ -109,7 +128,7 @@ class Player extends CI_Controller {
 				else
 				{
 				$error = array('error' => $this->upload->display_errors());
-				echo '<script>alert("Operation failde , try agian")</script>';
+				echo '<script>alert("Operation failed , try agian")</script>';
 				$this->load->view('edit_player');
 				}  
         

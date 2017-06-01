@@ -91,7 +91,7 @@
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img data-toggle="modal" data-target="#myModal2" class="profile-user-img img-responsive img-circle" src="<?php  echo 'http://'.getenv('HTTP_HOST').'public/profile_img/'.$player[0]['name'].'/'.$player[0]['profile_url']; ?>" alt="User profile picture">
+              <img data-toggle="modal" data-target="#myModal2" class="profile-user-img img-responsive img-circle" src="<?php  echo 'http://'.getenv('HTTP_HOST').'/cric/public/profile_img/'.$player[0]['name'].'/'.$player[0]['profile_url']; ?>" alt="User profile picture">
 
               <h3 class="profile-username text-center"><?php  echo $player[0]['name'];?></h3>
 
@@ -154,7 +154,7 @@
               </p>
 
               <hr>
-				--->
+				-->
               <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
 
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
@@ -362,7 +362,7 @@
         <h4 class="modal-title">Modal Header</h4>
       </div>
       <div class="modal-body">
-	   <form role="form" action = "<?php echo 'http://'.getenv('HTTP_HOST');?>edit_player_detail1/<?php echo $player[0]['pid']; ?>" method = "post">
+	   <form role="form" action = "<?php echo 'http://'.getenv('HTTP_HOST');?>/cric/edit_player_detail1/<?php echo $player[0]['pid']; ?>" method = "post">
              <div class= "row">
 			   <div class="col-lg-4 col-md-4 col-xm-12  col-sm-12">
                   <select onchange = "get_state(this.value)" class="form-control" id = "" name  = "country" value = "<?php echo $player[0]['country']?>" >
@@ -428,7 +428,7 @@
 </div>
 
 	
-	<!--  profile upload model --->
+	<!--  profile upload model -->
 	
 			
 <div id="myModal2" class="modal fade" role="dialog">
@@ -440,7 +440,7 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title"><center>CHANGE PROFILE PHOTO </center> </h4>
       </div>
-	  <form enctype="multipart/form-data"  class="form-horizontal" action = "<?php echo 'http://'.getenv('HTTP_HOST');?>edit_player_photo_upload/<?php echo $player[0]['pid'].'/'.$player[0]['name']; ?>" method= "post">
+	  <form enctype="multipart/form-data"  class="form-horizontal" action = "<?php echo 'http://'.getenv('HTTP_HOST');?>/cric/edit_player_photo_upload/<?php echo $player[0]['pid'].'/'.$player[0]['name']; ?>" method= "post">
        <div class="modal-body">
 	   <div class="row">
 	   	<div style = "text-align: center;">
@@ -472,7 +472,7 @@
 	}
 </style>
 	
-	<!--  ./ profile upload model --->
+	<!--  ./ profile upload model -->
 	
 	
 	
@@ -487,19 +487,21 @@
 	function get_state(aa) {
 		var pp  = aa;
 		//alert(pp);
-		$.ajax({url: "<?php echo 'http://'.getenv('HTTP_HOST');?>load_state/"+pp, success: function(result){
+		$.ajax({url: "<?php echo 'http://'.getenv('HTTP_HOST');?>/cric/load_state/"+pp, success: function(result){
         $("#load_state").html(result);
     }});
+    // $.ajax({url: "load_state/"+pp, success: function(result){
+    //     $("#load_state").html(result);
+    // }});
+
 	}	
 	/////get city list by ajax regarding state 
 		function get_city(bb) {
 		var pp  = bb;
 		//alert(pp);
 
-		$.ajax({url: "<?php echo 'http://'.getenv('HTTP_HOST');?>load_city/"+pp, success: function(result){
-				$("#load_city").html(result);
-				//alert(result);
-
+		$.ajax({url: "<?php echo 'http://'.getenv('HTTP_HOST');?>/cric/load_city/"+pp, success: function(result){
+  				$("#load_city").html(result);
 			}});		
 		}
 	
