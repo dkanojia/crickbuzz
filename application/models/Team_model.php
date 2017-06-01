@@ -47,6 +47,9 @@ class Team_model extends CI_Model {
 	
 	function create_team($data){
 		$this->db->insert('team' , $data);
+		$tid = $this->db->insert_id();
+		return $tid;
+
     }   
 	
 	function alreadyInTeamPList($id){
@@ -121,7 +124,29 @@ class Team_model extends CI_Model {
 		foreach($data as $value){
 		//echo '<script>alert("'.$value['team_name'].'")</script>';
 
-		$str = $str . '<tr><td>'.$ii.'</td><td><img height= "50px" width = "60px" src = "http://'.getenv('HTTP_HOST').'/cric/public/team_logo/'.$value['team_name'].'/'.$value['team_logo'].'"></td><td>'.$value['team_name'].'</td><td>'.$value['caption'].'</td><td>'.$value['vice_caption'].'</td><td>'.$value['city'].'</td><td>'.$value['created_on'].'</td><td><button class= "btn btn-success btn-xs"><a href = "http://'.getenv('HTTP_HOST').'/cric/add_team_players/'.$value['tid'].'">VIEW</a></button><button  class= "btn btn-danger btn-xs"><a href = "'.$value['tid'].'">DELETE</a></button></td></tr>';
+		$this->db->select('*');
+		$this->db->from('team_players');
+		
+		$this->db->where('team_id', $value['tid']);
+		$query_for_plyrs = $this->db->get();
+		$res_plyrs = $query_for_plyrs->result_array();
+		$count_i =0;
+		foreach($res_plyrs as $value_count){
+			$count_i++;
+		}
+
+		$str = $str . '<tr>
+			<td>'.$ii.'</td>
+			<td><img height= "50px" width = "60px" src = "http://'.getenv('HTTP_HOST').'/cric/public/team_logo/'.$value['team_name'].'/'.$value['team_logo'].'"></td>
+			<td>'.$value['team_name'].'</td>
+			<td>'.$value['captain'].'</td>
+			<td>'.$value['vice_captain'].'</td>
+			<td>'.$value['country'].'</td>
+			<td>'.$value['state'].'</td>
+			<td>'.$value['city'].'</td>
+			<td>'.$count_i.'</td>
+			<td>'.$value['created_on'].'</td>
+			<td><button class= "btn btn-success btn-xs"><a href = "http://'.getenv('HTTP_HOST').'/cric/add_team_players/'.$value['tid'].'">VIEW</a></button><button  class= "btn btn-danger btn-xs"><a href = "'.$value['tid'].'">DELETE</a></button></td></tr>';
 			$ii++;
 		}
 		echo '<script>alert("'.$str.'")</script>';
@@ -293,5 +318,16 @@ $str = $str . '<tr><td>'.$ii.'</td><td><img height = "60px" width = "60px" src =
 		return $str;
     } 
 	
-   	
+   	function add_teams_player($player_id,$team_id){
+		$data['player_id']= $player_id;
+		$data['team_id']= $team_id;
+		 
+		if($this->db->insert('team_players' , $data)){
+			echo "1";
+		}else{
+			echo "0";
+
+		}
+		
+	}
 }

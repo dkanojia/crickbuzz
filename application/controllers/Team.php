@@ -73,11 +73,53 @@ class Team extends CI_Controller {
 		
 		$data['team_name'] = $team;
 		
-		
-		
-		
-		
-		
+		$team_player_list['player_list'] = $this->input->post('player_list');
+
+		// Array
+		// (
+		//     [player_list] => Array
+		//         (
+		//             [0] => 27
+		//             [1] => 28
+		//             [2] => 32
+		//         )
+
+		// )
+
+		// $total_player = array();
+
+		// foreach ($team_player_list['player_list'] as $value) {
+		// 	$this->load->model('team_model');
+		// 	$this->team_model->add_teams_player($value,$team);
+		// 	// $total_player [] = ['player_id'=>$value,'team_id'=>$team];
+		// }
+
+
+		// Array
+		// (
+		//     [0] => Array
+		//         (
+		//             [player_id] => 26
+		//             [team_id] => dfdf
+		//         )
+
+		//     [1] => Array
+		//         (
+		//             [player_id] => 27
+		//             [team_id] => dfdf
+		//         )
+
+		//     [2] => Array
+		//         (
+		//             [player_id] => 33
+		//             [team_id] => dfdf
+		//         )
+
+		// )
+		// echo "<pre>";
+		// print_r($team_player_list['player_list']);	
+		// echo "</pre>";
+		// exit;
 		
 		//folder create if not exist 
 	$dir_ck = "./public/team_logo/".$team;
@@ -99,7 +141,12 @@ class Team extends CI_Controller {
 				{
 					//insert in data base64_decode
 						$this->load->model('team_model');
-						$this->team_model->create_team($data);
+						$tid = $this->team_model->create_team($data);
+
+						foreach ($team_player_list['player_list'] as $value) {
+							$this->team_model->add_teams_player($value,$tid);
+						}
+						
 						$data['message_succ'] = 'team successfully registered';
 
 							$this->load->view('header');

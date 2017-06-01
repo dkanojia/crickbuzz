@@ -96,7 +96,6 @@
         </style>
    
    
-		
 			
 			
 			
@@ -113,6 +112,11 @@
 		 </div>
 				
 				
+		<label for="exampleInputEmail1">Choose Players </label>
+
+            <select multiple="multiple" onchange = "chech()" id = "players_list"  name="player_list[]">
+				<?php echo $players; ?>
+            </select>
 			 
 			 
              </div>

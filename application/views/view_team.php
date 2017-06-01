@@ -36,7 +36,10 @@
         <th>NAME</th>
         <th>CAPTAIN</th>
         <th>VICE CAPTAIN</th>
+        <th>COUNTRY</th>
+        <th>STATE</th>
         <th>CITY</th>
+        <th>TOTAL PLAYERS</th>
         <th>REGISTERED DATE</th>
         <th>ACTION</th>
       </tr>
@@ -63,7 +66,10 @@
         <th>NAME</th>
         <th>CAPTAIN</th>
         <th>VICE CAPTAIN</th>
+        <th>COUNTRY</th>
+        <th>STATE</th>
         <th>CITY</th>
+        <th>TOTAL PLAYERS</th>
         <th>REGISTERED DATE</th>
         <th>ACTION</th>
       </tr>
@@ -180,7 +186,7 @@ $.ajax({url: "requst_already_pl_ls/"+aa, success: function(result){
 
 function addPl(aa){
 	var team_id = document.getElementById('team_already_players').value;
-		//alert(aa +','+team_id );
+		// alert(aa +','+team_id );
 
 	if(team_id != ''){
 	$.ajax({url: "add_team_player/"+aa+"/"+team_id, success: function(result){
