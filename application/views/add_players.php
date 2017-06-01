@@ -52,7 +52,7 @@
   
   <div class = "col-md-2 col-lg-2 col-sm-12 col-xm-12">
   <div class="has-feedback">
-                  <select class= "form-control" name = "team" id = "team"  >
+                  <select onchange = "searchbyTeam()" class= "form-control" name = "team" id = "team"  >
           <option value = ""> Choose Team
           </option>
           

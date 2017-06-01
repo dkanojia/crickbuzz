@@ -39,4 +39,15 @@ $(document).on('keyup', '#search_mobile', function() {
 	}
 });
 
+function searchbyTeam()
+{
+	var team = document.getElementById('team').value;
+
+    if(team != ''){
+		$.ajax({url: "add_player_ajax_search_team/"+team, success: function(result){
+			$("#player_list").html(result);
+		}});
+	}
+}
+
 </script>

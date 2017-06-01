@@ -26,6 +26,11 @@ class Team extends CI_Controller {
 		$this->load->model('team_model');
 		$this->team_model->ajax_search_mobile($mobile);
 	}
+
+	public function add_player_ajax_search_team($team){
+		$this->load->model('team_model');
+		$this->team_model->ajax_search_team($team);
+	}
 	
 	public function add_players()
 	{

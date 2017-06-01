@@ -37,6 +37,7 @@ $route['ajax_make_vicecaption/(:any)'] = 'team/ajax_make_vicecaption/$1';
 $route['add_player_ajax_search_mobile/(:any)'] = 'team/add_player_ajax_search_mobile/$1';
 $route['add_player_ajax_search_name/(:any)'] = 'team/add_player_ajax_search_name/$1';
 $route['add_player_ajax_search_city/(:any)'] = 'team/add_player_ajax_search_city/$1';
+$route['add_player_ajax_search_team/(:any)'] = 'team/add_player_ajax_search_team/$1';
 
 
 $route['edit_team/(:num)'] = 'team/edit/$1';
