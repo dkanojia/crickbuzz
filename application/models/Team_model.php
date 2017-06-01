@@ -23,14 +23,22 @@ class Team_model extends CI_Model {
 		$data['player_id']= $id;
 		$data['team_id']= $team_id;
 		
-		 
-		if($this->db->insert('team_players' , $data)){
-			echo "1";
-		}else{
-			echo "0";
+		$this->db->select('*');
+		$this->db->from('team_players');
+        $where_array = array('team_id' => $team_id, 'player_id' => $id);
+		$this->db->where($where_array);
+		$query_for_already_plyr = $this->db->get();
+		$data_for_already_plyr =  $query_for_already_plyr->result_array();
 
+		if($data_for_already_plyr){
+			echo "0";
+		}else{
+			if($this->db->insert('team_players' , $data)){
+				echo "1";
+			}else{
+				echo "0";
+			}
 		}
-		
 	}
 	
 	
