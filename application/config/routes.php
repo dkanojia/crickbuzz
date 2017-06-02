@@ -73,8 +73,10 @@ $route['update_score'] = 'score/view';
 $route['view_score'] = 'score/past';
 $route['load_team/(:num)'] = 'score/load_team/$1';
 $route['load_players_team/(:any)/(:any)'] = 'score/load_team/$1/$2';
-
-		
+$route['score_updating_according_match'] = 'score/updating';
+$route['match_started/(:num)'] = 'score/match_parameters/$1';
+$route['set_parameter_match'] = 'score/set_parameter_match';
+	
 		/** user **/
 $route['submit_user_form'] = 'user/submit_user_form';
 $route['create_user'] = 'user/create';

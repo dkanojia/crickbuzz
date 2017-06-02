@@ -83,4 +83,87 @@ class Score extends CI_Controller {
 		$this->load->view('footer');
 		$this->load->view('globaljs');
 	}
+
+	public function updating()
+	{
+		
+		$this->load->model('match_model');
+		$data['mathces']= $this->match_model->getTodayMatches();
+		$this->load->view('header');
+		$this->load->view('sidebar');
+		$this->load->view('score_updating_according_match', $data);
+		$this->load->view('rightsidebar');
+		$this->load->view('footer');
+		$this->load->view('globaljs');
+	}
+
+	public function match_parameters($id)
+	{	
+
+		$this->load->model('match_model');
+		
+		$data['match_name']= $this->match_model->getNameOfMatch($id);
+		$data['tournament_name']= $this->match_model->getNameOfTournmament($id);
+		
+		$data['match_team_list'] = $this->match_model->getTeamList($id);
+
+		$value = 1;
+
+		$this->match_model->updateStatusOfMatch($id,$value);
+
+		$this->load->view('header');
+		$this->load->view('sidebar');
+		$this->load->view('match_started', $data);
+		$this->load->view('rightsidebar');
+		$this->load->view('footer');
+		$this->load->view('globaljs');
+	}
+
+	public function set_parameter_match()
+	{
+		//getting data from player registration form
+		
+	    $ininig_name_value =  $this->input->post('inning_choose');
+		
+		if($ininig_name_value == 1)
+			$ininig_name = 'Bat';
+		else
+			$ininig_name = 'Field';
+
+	    $toss_winner_id =  $this->input->post('toss_winner_team');
+	    $this->load->model('team_model');
+	    $team11 = $this->team_model->teamnameById($toss_winner_id);
+	    $data_for_echo['team_name'] = $team11;
+
+	    $data['toss_winner_id'] = $toss_winner_id;
+	    $data['match_id'] = 15;
+
+		//insert in data base64_decode
+		$this->load->model('match_model');
+		$this->match_model->setmatch_parameter($data);
+		
+		$data_for_echo['message_succ'] = 'Match Parameters Successfully Set';
+
+		$this->load->view('header');
+		$this->load->view('sidebar');
+		$this->load->view('success_player', $data_for_echo);
+		$this->load->view('rightsidebar');
+		$this->load->view('footer');
+		$this->load->view('globaljs');
+	}
+
+	public function live_score($id)
+	{	
+
+		// $this->load->model('match_model');
+		
+		// $data['match_name']= $this->match_model->getNameOfMatch($id);
+		// $data['tournament_name']= $this->match_model->getNameOfTournmament($id);
+		// $this->load->view('header');
+		// $this->load->view('sidebar');
+		// $this->load->view('match_started', $data);
+		// $this->load->view('rightsidebar');
+		// $this->load->view('footer');
+		// $this->load->view('globaljs');
+	}
 }

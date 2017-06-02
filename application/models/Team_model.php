@@ -59,6 +59,15 @@ class Team_model extends CI_Model {
 		return $tid;
 
     }   
+
+    function teamnameById($id){
+    	$this->db->select('*');
+		$this->db->from('team');
+		$this->db->where('tid', $id);
+		$query = $this->db->get();
+		$data =  $query->row();
+		return $data->team_name;
+    }
 	
 	function alreadyInTeamPList($id){
 		$this->db->select('*');
