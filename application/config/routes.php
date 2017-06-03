@@ -75,7 +75,8 @@ $route['load_team/(:num)'] = 'score/load_team/$1';
 $route['load_players_team/(:any)/(:any)'] = 'score/load_team/$1/$2';
 $route['score_updating_according_match'] = 'score/updating';
 $route['match_started/(:num)'] = 'score/match_parameters/$1';
-$route['set_parameter_match'] = 'score/set_parameter_match';
+$route['set_parameter_match/(:num)'] = 'score/set_parameter_match/$1';
+$route['live_score/(:any)/(:any)/(:any)'] = 'score/live_score/$1/$2/$3';
 	
 		/** user **/
 $route['submit_user_form'] = 'user/submit_user_form';
@@ -90,7 +91,7 @@ $route['get_all_cities'] = 'users/get_all_cities';
 
 
 		/** APIs **/
-$route['home_matches_apis'] = 'tournament_api';
+$route['home_matches_page_api'] = 'home_matches_page_api';
 
 		/** extra **/
 $route['404_override'] = 'page/show_404';

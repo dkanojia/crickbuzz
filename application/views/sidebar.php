@@ -146,6 +146,10 @@
               <a href="<?php  echo 'http://'.getenv('HTTP_HOST'); ?>/cric/update_score"><i class="fa fa-circle-o"></i> View Score 
               </a>
            </li>
+           <li>
+              <a href="<?php  echo 'http://'.getenv('HTTP_HOST'); ?>/cric/score_updating_according_match"><i class="fa fa-circle-o"></i> Start Match 
+              </a>
+           </li>
 		   
 		   <li><a href="<?php  echo 'http://'.getenv('HTTP_HOST'); ?>/cric/update_score"><i class="fa fa-circle-o"></i>  View Past Score </a></li>
 		  

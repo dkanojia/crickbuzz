@@ -238,4 +238,36 @@ class Match_model extends CI_Model {
 	function setmatch_parameter($data){
 		$this->db->insert('match_parameter' , $data);
     }   
+
+    function getSecondTeamName($id,$t_id){
+		
+		$this->db->select('*');
+		$this->db->from('matches');
+		$this->db->where('intId' , $id);
+
+		$query = $this->db->get();
+		$data =$query->result_array();
+
+		$team1_id = '';
+		$team2_id = '';
+
+		$str = '';
+		foreach($data as $value){
+			$team1_id = $value['team1_id'];
+			$team2_id = $value['team2_id'];
+		}
+
+		$this->db->select('*');
+		$this->db->from('team');
+		
+		if($t_id == $team1_id) 
+			$this->db->where('tid' , $team1_id);
+		else
+			$this->db->where('tid' , $team2_id);
+
+		$query2 = $this->db->get();
+		$data2 =$query2->row();
+
+		return $data2->team_name;
+	}
 }

@@ -32,7 +32,7 @@
             <div class = "row">
               <div class="col-md-12 col-lg-12 col-sm-12 col-xm-12">
                 <div class = "col-md-12 col-lg-12 col-sm-12 col-xm-12">
-                  <form class="form-horizontal" role="form" action ="<?php echo 'http://'.getenv('HTTP_HOST'); ?>/cric/set_parameter_match" method= "post">
+                  <form class="form-horizontal" role="form" action ="<?php echo 'http://'.getenv('HTTP_HOST'); ?>/cric/set_parameter_match/<?php echo $match_id?>" method= "post">
                     <div class="box-body">
                       <div class="form-group">
                           <label for="inputEmail3" class="col-sm-2 control-label">Tournament Name </label>

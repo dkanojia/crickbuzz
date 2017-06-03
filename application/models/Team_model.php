@@ -379,4 +379,63 @@ $str = $str . '<tr><td>'.$ii.'</td><td><img height = "60px" width = "60px" src =
 		}
 		
 	}
+
+	function getListOfBatsman($t_id){
+		$this->db->select('*');
+		$this->db->from('team_players');
+		$this->db->like('team_id', $t_id);
+		
+		$query = $this->db->get();
+		$data = $query->result_array();
+		
+		$str = '';
+		$ii =1;
+		foreach($data as $value){
+		
+			$this->db->select('*');
+			$this->db->from('players');
+			$this->db->like('pid', $value['player_id']);
+			
+			$query2 = $this->db->get();
+			$data2 = $query2->row();
+
+			// $str = $str . '<tr>
+			// 	<td>'.$ii.'</td>
+			// 	<td><img height= "50px" width = "60px" src = "http://'.getenv('HTTP_HOST').'/cric/public/team_logo/'.$value['team_name'].'/'.$value['team_logo'].'"></td>
+			// 	<td>'.$value['team_name'].'</td>
+			// 	<td>'.$value['captain'].'</td>
+			// 	<td>'.$value['vice_captain'].'</td>
+			// 	<td>'.$value['country'].'</td>
+			// 	<td>'.$value['state'].'</td>
+			// 	<td>'.$value['city'].'</td>
+			// 	<td>'.$count_i.'</td>
+			// 	<td>'.$value['created_on'].'</td>
+			// 	<td><button class= "btn btn-success btn-xs"><a href = "http://'.getenv('HTTP_HOST').'/cric/add_team_players/'.$value['tid'].'">VIEW</a></button><button  class= "btn btn-danger btn-xs"><a href = "'.$value['tid'].'">DELETE</a></button></td></tr>';
+
+			$str = $str . '
+					<div class = "row">
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">
+                          Batsman '.$ii.': 
+                        </div>
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
+                          '.$data2->name.'
+                        </div>
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
+                          <input type="text" required name  = "batscore" class="form-control" id="batscore_id" placeholder="">
+                        </div>
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
+                          <input type="text" required name  = "outstatus" class="form-control" id="outstatus_id" placeholder="P/O">
+                        </div>
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">
+                          BowlerName
+                        </div>
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
+                          <input type="text" required name  = "bowl" class="form-control" id="bowl_id" placeholder="1">
+                        </div>
+                      </div>';			
+			$ii++;
+		}
+		
+		return $str;
+	}
 }
