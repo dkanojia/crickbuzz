@@ -92,6 +92,7 @@ $route['get_all_cities'] = 'users/get_all_cities';
 
 		/** APIs **/
 $route['home_matches_page_api'] = 'home_matches_page_api';
+$route['tournament_page_api'] = 'tournament_page_api';
 
 		/** extra **/
 $route['404_override'] = 'page/show_404';
