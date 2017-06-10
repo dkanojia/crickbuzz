@@ -87,7 +87,7 @@ class Player_model extends CI_Model {
 		$str  = '';
 		$ii = 1;
 		foreach($data as $key => $value){
-			$str = $str . '<tr><td>'.$ii.'</td><td><img "50px" width = "50px" class="pprofile" src = "'.base_url().'/public/profile_img/'.$value['name'].'/'.$value['profile_url'].'"></td><td>'.$value['name'].'</td><td>'.$value['role'].'</td><td>'.$value['dob'].'</td><td>'.$value['mobile'].'</td><td>'.$value['city'].'</td><td>'.$value['bat'].'</td><td>'.$value['bowler'].'</td><td>'.$value['team'].'</td><td><a href = "edit_player/'.$value['pid'].'"><button class ="btn btn-warning btn-xs">Edit</button></a><a href = "delete_player/'.$value['pid'].'"><button class ="btn btn-danger btn-xs">Delete</button></a></td></tr>';
+			$str = $str . '<tr><td>'.$ii.'</td><td><img "50px" width = "50px" class="pprofile" src = "http://'.getenv('HTTP_HOST').'/cric/public/profile_img/'.$value['name'].'/'.$value['profile_url'].'"></td><td>'.$value['name'].'</td><td>'.$value['role'].'</td><td>'.$value['dob'].'</td><td>'.$value['mobile'].'</td><td>'.$value['city'].'</td><td>'.$value['bat'].'</td><td>'.$value['bowler'].'</td><td>'.$value['team'].'</td><td><a href = "edit_player/'.$value['pid'].'"><button class ="btn btn-warning btn-xs">Edit</button></a><a href = "delete_player/'.$value['pid'].'"><button class ="btn btn-danger btn-xs">Delete</button></a></td></tr>';
 			$ii++;
 		}
 		 //$str;
