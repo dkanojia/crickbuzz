@@ -75,6 +75,7 @@
     <thead>
       <tr style = "background-color: rgba(0, 0, 0, 0.6); color: #fff;">
         <th>#</th>
+        <th>IMAGE </th>
         <th>TOURNAMENT NAME </th>
         <th>MATCH TITLE</th>
         <th>TEAM 1</th>
@@ -87,12 +88,13 @@
       </tr>
     </thead>
     <tbody id = "view_player_tbl">
-	<?php echo $mathces; ?>
-	
+  <?php echo $mathces; ?>
+  
     </tbody>
-	   <tfoot>
+     <tfoot>
       <tr style = "background-color: rgba(0, 0, 0, 0.6); color: #fff;">
         <th>#</th>
+        <th>IMAGE </th>
         <th>TOURNAMENT NAME </th>
         <th>MATCH TITLE</th>
         <th>TEAM 1</th>

@@ -29,7 +29,7 @@
 			<div class= "row">
 			<div class = "col-lg-8 col-md-8 col-sm-12 col-xm-12">
             <!-- form start -->
-            <form role="form" action = "<?php echo 'http://'.getenv('HTTP_HOST');?>/cric/submit_create_match" method = "post">
+            <form role="form" enctype="multipart/form-data" action = "<?php echo 'http://'.getenv('HTTP_HOST');?>/cric/submit_create_match" method = "post">
               <div class="box-body">
 			  
 			  
@@ -286,7 +286,11 @@
 						<input class = "form-control" type = "text" name= "yu_link" placeholder = "http://www.youube.com/Link" >
 					</div>
 				</div>
-				
+
+				 <!-- <div class="form-group">
+					 <input accept="image/*" type='file' name  = "userfile" id="imgInp" />
+					<img id="blah" src="<?php 'http://'.getenv('HTTP_HOST'); ?>/cric/public/img/upload_profile_pic.png" alt="choose your image" style="width: 150px;" />
+				</div> -->
 				
 				<div class= "col-md-12 col-lg-12 col-xm-12 col-sm-12">
                 <div class="form-group">
@@ -297,14 +301,23 @@
               <!-- /.box-body -->
 
               
-            </form>
+			<!-- <div class = "col-lg-8 col-md-8 col-sm-12 col-xm-12"> -->
 			</div>
+
 			<div class = "col-lg-4 col-md-4 col-sm-12 col-xm-12">
 			
-			
-			
-			
+				<div class= "col-lg-12 col-md-12 col-xm-12 col-sm-12">
+					<p >Choose Match photo</p>
+					<div >
+						 <input accept="image/*" type='file' name  = "userfile" id="imgInp" />
+						<img id="blah" style="width: 240px;" src="<?php 'http://'.getenv('HTTP_HOST'); ?>/cric/public/img/upload_profile_pic.png" alt="choose your image" />
+					</div>
+    
+				</div>
 			</div>
+
+            </form>
+            
 			</div>
 			<div class="row">
 			

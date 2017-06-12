@@ -12,6 +12,7 @@ class Match extends CI_Controller {
 	
 	public function submit_create_match()
 	{
+
 		$data['tournament_id'] = $this->input->post('tour_name');
 		if(isset($data['tournament_id'])){}else{$data['tournament_id'] = '';}
 		
@@ -19,6 +20,7 @@ class Match extends CI_Controller {
 		$data['team2_id'] = $this->input->post('team2');
 		
 		$data['title'] = $this->input->post('match_title');
+		$data['banner_image'] =  $_FILES['userfile']['name'];
 		
 		$day = $this->input->post('day');
 		$month = $this->input->post('month');
@@ -57,18 +59,48 @@ class Match extends CI_Controller {
 		$data['ground_name'] = $this->input->post('ground_name');
 		$data['overs'] = $this->input->post('overs');
 		$data['online_link'] = $this->input->post('yu_link');
-		
-		$this->load->model('match_model');
-		$this->match_model->create_match($data);
-		
-		$this->load->view('header');
-		$this->load->view('sidebar');
-		$this->load->view('success_player');
-		$this->load->view('rightsidebar');
-		$this->load->view('footer');
-		$this->load->view('globaljs');
-		
+
+
+		//folder create if not exist 
+		$match_name = $data['title'];
+		$dir_ck = "./public/match_img/".$match_name;
+		if (!file_exists($dir_ck)) {
+			mkdir($dir_ck, 0777, true);
+		}
+	
+		//image upload code here
+	   $config =  array(
+                  'upload_path'     => $dir_ck,
+                  'allowed_types'   => "gif|jpg|png|jpeg",
+                  'overwrite'       => TRUE,
+                  'max_size'        => "2048000",  // Can be set to particular file size
+                  'max_height'      => "768",
+                  'max_width'       => "1024"  
+                );    
+		$this->load->library('upload', $config);
+		if($this->upload->do_upload())
+		{
+			//insert in data base64_decode
+			$this->load->model('match_model');
+			$this->match_model->create_match($data);
+				$data['message_succ'] = 'player successfully registered';
+
+					$this->load->view('header');
+					$this->load->view('sidebar');
+					$this->load->view('success_player');
+					$this->load->view('rightsidebar');
+					$this->load->view('footer');
+					$this->load->view('globaljs');
+			//$data = array('upload_data' => $this->upload->data());
+			//$this->load->view('upload_success');
+		}
+		else
+		{
+		$error = array('error' => $this->upload->display_errors());
+		$this->load->view('create_match', $error);
+		}  
 	}
+
 	public function create()
 	{
 		

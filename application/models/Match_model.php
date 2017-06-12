@@ -60,7 +60,7 @@ class Match_model extends CI_Model {
 			$data1 =$query1->result_array();
 			if(isset($data1[0]['tour_name'])){}else{$data1[0]['tour_name'] ='';}
 			
-			$str = $str . '<tr><td>'.$ii.'</td><td>'.$data1[0]['tour_name'].'</td><td>'.$value['title'].'</td><td>'.$value['team1_id'].'</td><td>'.$value['team2_id'].'</td><td>'.$value['overs'].'</td><td>'.$value['ground_name'].'</td><td>'.$value['city'].'</td><td>'.$value['start_date'].'</td><td><button class= "btn btn-success btn-xs" ><a href = "">EDIT</a></button><button class= "btn btn-danger btn-xs" ><a href = "">DELETE</a></button></td></tr>';
+			$str = $str . '<tr><td>'.$ii.'</td><td><img "50px" width = "50px" class="pprofile" src = "http://'.getenv('HTTP_HOST').'/cric/public/match_img/'.$value['title'].'/'.$value['banner_image'].'"></td><td>'.$data1[0]['tour_name'].'</td><td>'.$value['title'].'</td><td>'.$value['team1_id'].'</td><td>'.$value['team2_id'].'</td><td>'.$value['overs'].'</td><td>'.$value['ground_name'].'</td><td>'.$value['city'].'</td><td>'.$value['start_date'].'</td><td><button class= "btn btn-success btn-xs" ><a href = "">EDIT</a></button><button class= "btn btn-danger btn-xs" ><a href = "">DELETE</a></button></td></tr>';
 			$ii++;
 		}
 		
