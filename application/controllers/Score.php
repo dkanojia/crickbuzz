@@ -179,6 +179,8 @@ class Score extends CI_Controller {
 		$p_list = $this->team_model->getListOfBatsman($tid);
 		$data_for_echo['team_list'] = $p_list;
 
+		
+
 		$this->load->view('header');
 		$this->load->view('sidebar');
 		$this->load->view('live_score',$data_for_echo);

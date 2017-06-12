@@ -20,6 +20,7 @@ class Tournament_page_api_model extends CI_Model {
 		$ongoing = '';
 		$upcoming = '';
 		$past = '';
+		$all = '';
 		
 		foreach($data as $key => $value) {
 			$tour_id = $value['intId'];
@@ -38,29 +39,31 @@ class Tournament_page_api_model extends CI_Model {
 
 			// echo strtotime($start_date1)."</br>";
 			// echo strtotime($date)."</br>";
+			$img_src = "http://".getenv('HTTP_HOST')."/cric/public/team_s_banner/".$value['tour_name']."/".$value['tour_banner'];
 
 			if(($start_date <= $today_date) && ($end_date > $today_date)){		
 			// if(($status == 1) || ($status == 2) ){		
-				$ongoing = $ongoing . '{ "tournament_id":"'.$tour_id.'", "start_date":"'.$tour_start_date.'"  , "end_date":"'.$tour_end_date.'" ,"status":"ongoing" , "banner_image":"'.$tour_banner.'", "tournament_name":"'.$tour_name.'", "tournament_name":"'.$tour_name.'", "tournament_sponser":"'.$tour_sponser.'", "tournament_teams":"'.$tour_teams.'"},';				
+				$ongoing = $ongoing . '{ "tournament_id":"'.$tour_id.'", "start_date":"'.$tour_start_date.'"  , "end_date":"'.$tour_end_date.'" ,"status":"ongoing" , "banner_image":"'.$img_src.'", "tournament_name":"'.$tour_name.'", "tournament_name":"'.$tour_name.'", "tournament_sponser":"'.$tour_sponser.'", "tournament_teams":"'.$tour_teams.'"},';				
 
 			}elseif($start_date > $today_date){
 				
-				$upcoming = $upcoming . '{ "tournament_id":"'.$tour_id.'", "start_date":"'.$tour_start_date.'"  , "end_date":"'.$tour_end_date.'" ,"status":"upcoming" , "banner_image":"'.$tour_banner.'", "tournament_name":"'.$tour_name.'", "tournament_name":"'.$tour_name.'", "tournament_sponser":"'.$tour_sponser.'", "tournament_teams":"'.$tour_teams.'"},';
+				$upcoming = $upcoming . '{ "tournament_id":"'.$tour_id.'", "start_date":"'.$tour_start_date.'"  , "end_date":"'.$tour_end_date.'" ,"status":"upcoming" , "banner_image":"'.$img_src.'", "tournament_name":"'.$tour_name.'", "tournament_name":"'.$tour_name.'", "tournament_sponser":"'.$tour_sponser.'", "tournament_teams":"'.$tour_teams.'"},';
 			}elseif($end_date < $today_date){
-				$past = $past . '{ "tournament_id":"'.$tour_id.'", "start_date":"'.$tour_start_date.'"  , "end_date":"'.$tour_end_date.'" ,"status":"highlights" , "banner_image":"'.$tour_banner.'", "tournament_name":"'.$tour_name.'", "tournament_name":"'.$tour_name.'", "tournament_sponser":"'.$tour_sponser.'", "tournament_teams":"'.$tour_teams.'"},';
+				$past = $past . '{ "tournament_id":"'.$tour_id.'", "start_date":"'.$tour_start_date.'"  , "end_date":"'.$tour_end_date.'" ,"status":"highlights" , "banner_image":"'.$img_src.'", "tournament_name":"'.$tour_name.'", "tournament_name":"'.$tour_name.'", "tournament_sponser":"'.$tour_sponser.'", "tournament_teams":"'.$tour_teams.'"},';
 			}			
 	    }
 		
-		$ongoing = rtrim( $ongoing , ',');
+	    $ongoing = rtrim( $ongoing , ',');
 		$upcoming = rtrim( $upcoming , ',');
 		$past = rtrim( $past , ',');
+		$all = $past.' , '.$ongoing.' , '.$upcoming ;
 
-		$ongoing = '['.$ongoing.']';
-		$upcoming = '['.$upcoming.']';
-		$past = '['.$past.']';
+		$all = '['.$all.']';
 	
-		$data = '{"highlights": '.$past.' , "ongoing": '.$ongoing.' , "upcoming": '.$upcoming.'}';
-		echo '{"response":"true" , "data": '.$data.'}';
+		// $data = '{"highlights": '.$past.' , "ongoing": '.$ongoing.' , "upcoming": '.$upcoming.'}';
+		$data = '"all_tournament": '.$all.' ';
+		// echo '{"response":"true" , "data": '.$data.'}';
+		echo '{"response":"true" , '.$data.'}';
 	}
 	//echo $res;
 	//echo '{"response":"true" , "data": }';

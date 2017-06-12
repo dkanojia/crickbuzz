@@ -64,7 +64,8 @@
           <!-- form start -->
             <div class = "row">
               <div class="col-md-12 col-lg-12 col-sm-12 col-xm-12">
-                  <form class="form-horizontal" role="form" action ="<?php echo 'http://'.getenv('HTTP_HOST'); ?>/cric/set_parameter_match/<?php ?>" method= "post">
+                  <form class="form-horizontal" role="form" method= "post">
+                  <!-- action ="<?php echo 'http://'.getenv('HTTP_HOST'); ?>/cric/live_score/<?php ?>"  -->
                     <div class="box-body">
                       <div class="form-group">
                           <label for="inputEmail3" class="col-sm-2 control-label">Win Toss By</label>
@@ -73,7 +74,7 @@
                             </div>
                       </div>
                       <div class="form-group">
-                        <label for="inputPassword3" class="col-sm-2 control-label">Ist Inning</label>
+                        <label for="inputPassword3" class="col-sm-2 control-label">Ist Inning (Batting)</label>
                           <div class="col-sm-10">
                             <div><b><?php echo $team_name; ?></b></div>
                           </div>
@@ -156,70 +157,35 @@
                             </select>
                           </div>
                       </div>
-                      <?php echo $team_list; ?>
+                      <div class = "row">
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">
+                          Batsman 
+                        </div>
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
+                          Batsman's Name
+                        </div>
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
+                          Score Value
+                        </div>
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
+                          Playing Status
+                        </div>
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">
+                          Bowler's Name
+                        </div>
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
+                          Ball Thrown
+                        </div>
+                      </div>
+                      <div class = "row">
+                        <div class = "col-lg-12 col-md-12 col-xm-12 col-sm-12">
+                          <hr> 
+                        </div>
+                      </div>
+                      <!-- <?php echo $team_list; ?> -->
                       <div class = "row">
                         <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">
                           Batsman 1 : 
-                        </div>
-                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
-                          Batsman Name
-                        </div>
-                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
-                          <input type="text" required name  = "batscore" class="form-control" id="batscore_id" placeholder="">
-                        </div>
-                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
-                          <input type="text" required name  = "outstatus" class="form-control" id="outstatus_id" placeholder="P/O">
-                        </div>
-                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">
-                          BowlerName
-                        </div>
-                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
-                          <input type="text" required name  = "bowl" class="form-control" id="bowl_id" placeholder="1">
-                        </div>
-                      </div>
-                      <div class = "row">
-                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">
-                          Batsman 2 : 
-                        </div>
-                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
-                          Batsman Name
-                        </div>
-                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
-                          <input type="text" required name  = "batscore" class="form-control" id="batscore_id" placeholder="">
-                        </div>
-                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
-                          <input type="text" required name  = "outstatus" class="form-control" id="outstatus_id" placeholder="P/O">
-                        </div>
-                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">
-                          BowlerName
-                        </div>
-                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
-                          <input type="text" required name  = "bowl" class="form-control" id="bowl_id" placeholder="1">
-                        </div>
-                      </div>
-                      <div class = "row">
-                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">
-                          Batsman 2 : 
-                        </div>
-                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
-                          Batsman Name
-                        </div>
-                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
-                          <input type="text" required name  = "batscore" class="form-control" id="batscore_id" placeholder="">
-                        </div>
-                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
-                          <input type="text" required name  = "outstatus" class="form-control" id="outstatus_id" placeholder="P/O">
-                        </div>
-                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">
-                          BowlerName
-                        </div>
-                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
-                          <input type="text" required name  = "bowl" class="form-control" id="bowl_id" placeholder="1">
-                        </div>
-                      </div>
-                      <div class = "row">
-                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">
-                          Batsman 3 : 
                         </div>
                         <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
                           Batsman Name
@@ -303,9 +269,11 @@ $('.btn-number').click(function(e){
         input.val(0);
     }
 });
+
 $('.input-number').focusin(function(){
    $(this).data('oldValue', $(this).val());
 });
+
 $('.input-number').change(function() {
     
     minValue =  parseInt($(this).attr('min'));
@@ -328,20 +296,29 @@ $('.input-number').change(function() {
     
     
 });
+
 $(".input-number").keydown(function (e) {
-        // Allow: backspace, delete, tab, escape, enter and .
-        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
-             // Allow: Ctrl+A
-            (e.keyCode == 65 && e.ctrlKey === true) || 
-             // Allow: home, end, left, right
-            (e.keyCode >= 35 && e.keyCode <= 39)) {
-                 // let it happen, don't do anything
-                 return;
-        }
-        // Ensure that it is a number and stop the keypress
-        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-            e.preventDefault();
-        }
-    });
+      // Allow: backspace, delete, tab, escape, enter and .
+      if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+           // Allow: Ctrl+A
+          (e.keyCode == 65 && e.ctrlKey === true) || 
+           // Allow: home, end, left, right
+          (e.keyCode >= 35 && e.keyCode <= 39)) {
+               // let it happen, don't do anything
+               return;
+      }
+      // Ensure that it is a number and stop the keypress
+      if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+          e.preventDefault();
+      }
+  });
+
+$(document).ready(function(){ 
+  $(form).on('submit', function(){ 
+        location.reload();
+  });
+})
+
+
 
 </script>
