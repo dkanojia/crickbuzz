@@ -17,13 +17,11 @@ class Home_matches_page_api_model extends CI_Model {
 		$query = $this->db->get();
 		$data = $query->result_array();
 		
-		// $ongoing = '';
-		// $upcoming = '';
-		// $past = '';
-		$all = '';
+		$ongoing = '';
+		$upcoming = '';
+		$past = '';
 		
 		foreach($data as $key => $value) {
-			$m_id = $value['intId'];
 			$team1_id = $value['team1_id'];
 			$team2_id = $value['team2_id'];
 			$start_date = $value['start_date'];
@@ -125,33 +123,27 @@ class Home_matches_page_api_model extends CI_Model {
 			$place = $city_name.','.$state_name.','.$country_name;
 
 
-			$all = $all . '{ "match_id":"'.$m_id.'"  , "start_date":"'.$start_date.'"  , "end_date":"'.$end_date.'"  , "start_time" : "'.$start_time.'" , "end_time" : "'.$end_time.'" ,"status":"ongoing" ,  "ground_name":"'.$ground_name.'" , "overs":"'.$overs.'" , "place":"'.$place.'" , "tournament_name":"'.$tourna[0]['tour_name'].'" ,"team1_name":"'.$team1[0]['team_name'].'" ,"team2_name":"'.$team2[0]['team_name'].'" ,"team1_logo":"'.$team1[0]['team_logo'].'" ,"team2_logo":"'.$team2[0]['team_logo'].'", "description":"'.$value['description'].'", "banner_image":"'.$value['banner_image'].'", "title":"'.$value['title'].'"},';				
-			
 			// if($start_date1 < time() && $end_date1 > time()){		
-			// if(($status == 1) || ($status == 2) ){		
-			// 	$ongoing = $ongoing . '{ "start_date":"'.$start_date.'"  , "end_date":"'.$end_date.'"  , "start_time" : "'.$start_time.'" , "end_time" : "'.$end_time.'" ,"status":"ongoing" ,  "ground_name":"'.$ground_name.'" , "overs":"'.$overs.'" , "place":"'.$place.'" , "tournament_name":"'.$tourna[0]['tour_name'].'" ,"team1_name":"'.$team1[0]['team_name'].'" ,"team2_name":"'.$team2[0]['team_name'].'" ,"team1_logo":"'.$team1[0]['team_logo'].'" ,"team2_logo":"'.$team2[0]['team_logo'].'", "description":"'.$value['description'].'", "banner_image":"'.$value['banner_image'].'", "title":"'.$value['title'].'"},';
+			if(($status == 1) || ($status == 2) ){		
+				$ongoing = $ongoing . '{ "start_date":"'.$start_date.'"  , "end_date":"'.$end_date.'"  , "start_time" : "'.$start_time.'" , "end_time" : "'.$end_time.'" ,"status":"ongoing" ,  "ground_name":"'.$ground_name.'" , "overs":"'.$overs.'" , "place":"'.$place.'" , "tournament_name":"'.$tourna[0]['tour_name'].'" ,"team1_name":"'.$team1[0]['team_name'].'" ,"team2_name":"'.$team2[0]['team_name'].'" ,"team1_logo":"'.$team1[0]['team_logo'].'" ,"team2_logo":"'.$team2[0]['team_logo'].'", "description":"'.$value['description'].'", "banner_image":"'.$value['banner_image'].'", "title":"'.$value['title'].'"},';				
 
-
-			// }elseif($status == 0){
+			}elseif($status == 0){
 				
-			// 	$upcoming = $upcoming . '{ "start_date":"'.$start_date.'"  , "end_date":"'.$end_date.'"  , "start_time" : "'.$start_time.'" , "end_time" : "'.$end_time.'" ,"status":"upcoming" ,  "ground_name":"'.$ground_name.'" , "overs":"'.$overs.'" , "place":"'.$place.'" , "tournament_name":"'.$tourna[0]['tour_name'].'" ,"team1_name":"'.$team1[0]['team_name'].'" ,"team2_name":"'.$team2[0]['team_name'].'" ,"team1_logo":"'.$team1[0]['team_logo'].'" ,"team2_logo":"'.$team2[0]['team_logo'].'", "description":"'.$value['description'].'", "banner_image":"'.$value['banner_image'].'", "title":"'.$value['title'].'"},';
-			// }elseif($status == 4){
-			// 	$past = $past . '{ "start_date":"'.$start_date.'"  , "end_date":"'.$end_date.'"  , "start_time" : "'.$start_time.'" , "end_time" : "'.$end_time.'" ,"status":"highlights" ,  "ground_name":"'.$ground_name.'" , "overs":"'.$overs.'" , "place":"'.$place.'" , "tournament_name":"'.$tourna[0]['tour_name'].'" ,"team1_name":"'.$team1[0]['team_name'].'" ,"team2_name":"'.$team2[0]['team_name'].'" ,"team1_logo":"'.$team1[0]['team_logo'].'" ,"team2_logo":"'.$team2[0]['team_logo'].'", "description":"'.$value['description'].'", "banner_image":"'.$value['banner_image'].'", "title":"'.$value['title'].'"},';
-			// }			
+				$upcoming = $upcoming . '{ "start_date":"'.$start_date.'"  , "end_date":"'.$end_date.'"  , "start_time" : "'.$start_time.'" , "end_time" : "'.$end_time.'" ,"status":"upcoming" ,  "ground_name":"'.$ground_name.'" , "overs":"'.$overs.'" , "place":"'.$place.'" , "tournament_name":"'.$tourna[0]['tour_name'].'" ,"team1_name":"'.$team1[0]['team_name'].'" ,"team2_name":"'.$team2[0]['team_name'].'" ,"team1_logo":"'.$team1[0]['team_logo'].'" ,"team2_logo":"'.$team2[0]['team_logo'].'", "description":"'.$value['description'].'", "banner_image":"'.$value['banner_image'].'", "title":"'.$value['title'].'"},';
+			}elseif($status == 4){
+				$past = $past . '{ "start_date":"'.$start_date.'"  , "end_date":"'.$end_date.'"  , "start_time" : "'.$start_time.'" , "end_time" : "'.$end_time.'" ,"status":"highlights" ,  "ground_name":"'.$ground_name.'" , "overs":"'.$overs.'" , "place":"'.$place.'" , "tournament_name":"'.$tourna[0]['tour_name'].'" ,"team1_name":"'.$team1[0]['team_name'].'" ,"team2_name":"'.$team2[0]['team_name'].'" ,"team1_logo":"'.$team1[0]['team_logo'].'" ,"team2_logo":"'.$team2[0]['team_logo'].'", "description":"'.$value['description'].'", "banner_image":"'.$value['banner_image'].'", "title":"'.$value['title'].'"},';
+			}			
 	    }
 		
-		// $ongoing = rtrim( $ongoing , ',');
-		// $upcoming = rtrim( $upcoming , ',');
-		// $past = rtrim( $past , ',');
-		$all = rtrim( $all , ',');
+		$ongoing = rtrim( $ongoing , ',');
+		$upcoming = rtrim( $upcoming , ',');
+		$past = rtrim( $past , ',');
 
-		// $ongoing = '['.$ongoing.']';
-		// $upcoming = '['.$upcoming.']';
-		// $past = '['.$past.']';
-		$all = '['.$all.']';
+		$ongoing = '['.$ongoing.']';
+		$upcoming = '['.$upcoming.']';
+		$past = '['.$past.']';
 	
-		// $data = '{"highlights": '.$past.' , "ongoing": '.$ongoing.' , "upcoming": '.$upcoming.'}';
-		$data = '{"all_matches": '.$all.' }';
+		$data = '{"highlights": '.$past.' , "ongoing": '.$ongoing.' , "upcoming": '.$upcoming.'}';
 		echo '{"response":"true" , "data": '.$data.'}';
 	}
 	//echo $res;

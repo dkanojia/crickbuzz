@@ -54,7 +54,7 @@
             var tid = document.getElementById('team_id').innerHTML;
             var inid = document.getElementById('ininig_name_value').innerHTML;
             var urls = "<?php echo 'http://'.getenv('HTTP_HOST');?>"
-            var full_url = urls + "/cric/live_score/"+id+"/"+tid/+inid;
+            var full_url = urls + "/cric/live_score/"+id+"/"+tid + "/"+inid;
             window.location= full_url;
         }, 3000);
     </script>
