@@ -8,10 +8,17 @@ class Team_player_list_api extends CI_Controller {
         
     }
 
-	public function index()
+    function _remap($method, $params=array())
+    {
+        $methodToCall = method_exists($this, $method) ? $method : 'index';
+        return call_user_func_array(array($this, $methodToCall), $params);
+    }
+
+
+	public function index($id)
 	{	
 		$this->load->model('team_player_list_api_model');
-		$id = '1';
+		// $id = '1';
 		echo  $this->team_player_list_api_model->team_player_list($id);		
 	}
 	

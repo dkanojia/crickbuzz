@@ -8,10 +8,15 @@ class Players_detail_page_api extends CI_Controller {
         
     }
 
-	public function index()
+    function _remap($method, $params=array())
+    {
+        $methodToCall = method_exists($this, $method) ? $method : 'index';
+        return call_user_func_array(array($this, $methodToCall), $params);
+    }
+
+	public function index($id)
 	{
 		$this->load->model('players_detail_page_api_model');
-		$id = 34;
 		echo  $this->players_detail_page_api_model->player_detail($id);		
 	}
 	

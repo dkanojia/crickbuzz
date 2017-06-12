@@ -8,10 +8,16 @@ class Tournament_match_list_api extends CI_Controller {
         
     }
 
-	public function index()
+    function _remap($method, $params=array())
+    {
+        $methodToCall = method_exists($this, $method) ? $method : 'index';
+        return call_user_func_array(array($this, $methodToCall), $params);
+    }
+
+	public function index($id)
 	{	
 		$this->load->model('tournament_match_list_api_model');
-		$id = '94';
+		// $id = '94';
 		echo  $this->tournament_match_list_api_model->all_match($id);		
 	}
 	
