@@ -7,9 +7,8 @@
 
 <script>
 function chech(){
-	var aa = $(".selected-wrapper").text();
-	document.getElementById('players').value = aa;
-	//alert(aa);
+    var aa = $(".selected-wrapper").text();
+    document.getElementById('players').value = aa;
 }
 </script>
 

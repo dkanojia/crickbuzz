@@ -93,10 +93,14 @@ $route['get_all_cities'] = 'users/get_all_cities';
 		/** APIs **/
 $route['home_matches_page_api'] = 'home_matches_page_api';
 $route['tournament_page_api'] = 'tournament_page_api';
-$route['tournament_match_list_api/(:num)'] = 'tournament_match_list_api/index/$1';
-$route['match_team_list_api/(:num)'] = 'match_team_list_api/index/$1';
-$route['team_player_list_api/(:num)'] = 'team_player_list_api/index/$1';
-$route['players_detail_page_api/(:num)'] = 'players_detail_page_api/index/$1';
+$route['tournament_match_list_api'] = 'tournament_match_list_api';
+$route['match_team_list_api'] = 'match_team_list_api';
+$route['team_player_list_api'] = 'team_player_list_api';
+$route['players_detail_page_api'] = 'players_detail_page_api';
+// $route['tournament_match_list_api/(:num)'] = 'tournament_match_list_api/index/$1';
+// $route['match_team_list_api/(:num)'] = 'match_team_list_api/index/$1';
+// $route['team_player_list_api/(:num)'] = 'team_player_list_api/index/$1';
+// $route['players_detail_page_api/(:num)'] = 'players_detail_page_api/index/$1';
 
 		/** extra **/
 $route['404_override'] = 'page/show_404';

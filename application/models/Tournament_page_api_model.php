@@ -28,6 +28,7 @@ class Tournament_page_api_model extends CI_Model {
 			$tour_banner = $value['tour_banner'];
 			$tour_sponser = $value['tour_sponser'];	
 			$tour_teams = $value['teams'];
+			$tour_place = $value['place'];
 			$tour_start_date = $value['tour_start_date'];
 			$tour_end_date = $value['tour_end_date'];
 			$tour_team_count = $value['team_count'];
@@ -43,13 +44,13 @@ class Tournament_page_api_model extends CI_Model {
 
 			if(($start_date <= $today_date) && ($end_date > $today_date)){		
 			// if(($status == 1) || ($status == 2) ){		
-				$ongoing = $ongoing . '{ "tournament_id":"'.$tour_id.'", "start_date":"'.$tour_start_date.'"  , "end_date":"'.$tour_end_date.'" ,"status":"ongoing" , "banner_image":"'.$img_src.'", "tournament_name":"'.$tour_name.'", "tournament_sponser":"'.$tour_sponser.'", "tournament_teams":"'.$tour_teams.'"},';				
+				$ongoing = $ongoing . '{ "tournament_id":"'.$tour_id.'", "start_date":"'.$tour_start_date.'"  , "end_date":"'.$tour_end_date.'" ,"status":"ongoing" , "banner_image":"'.$img_src.'", "tournament_name":"'.$tour_name.'", "tournament_place":"'.$tour_place.'" ,"tournament_sponser":"'.$tour_sponser.'", "tournament_teams":"'.$tour_teams.'"},';				
 
 			}elseif($start_date > $today_date){
 				
-				$upcoming = $upcoming . '{ "tournament_id":"'.$tour_id.'", "start_date":"'.$tour_start_date.'"  , "end_date":"'.$tour_end_date.'" ,"status":"upcoming" , "banner_image":"'.$img_src.'", "tournament_name":"'.$tour_name.'", "tournament_sponser":"'.$tour_sponser.'", "tournament_teams":"'.$tour_teams.'"},';
+				$upcoming = $upcoming . '{ "tournament_id":"'.$tour_id.'", "start_date":"'.$tour_start_date.'"  , "end_date":"'.$tour_end_date.'" ,"status":"upcoming" , "banner_image":"'.$img_src.'", "tournament_name":"'.$tour_name.'", "tournament_place":"'.$tour_place.'" , "tournament_sponser":"'.$tour_sponser.'", "tournament_teams":"'.$tour_teams.'"},';
 			}elseif($end_date < $today_date){
-				$past = $past . '{ "tournament_id":"'.$tour_id.'", "start_date":"'.$tour_start_date.'"  , "end_date":"'.$tour_end_date.'" ,"status":"past" , "banner_image":"'.$img_src.'", "tournament_name":"'.$tour_name.'", "tournament_sponser":"'.$tour_sponser.'", "tournament_teams":"'.$tour_teams.'"},';
+				$past = $past . '{ "tournament_id":"'.$tour_id.'", "start_date":"'.$tour_start_date.'"  , "end_date":"'.$tour_end_date.'" ,"status":"past" , "banner_image":"'.$img_src.'", "tournament_name":"'.$tour_name.'", "tournament_place":"'.$tour_place.'" , "tournament_sponser":"'.$tour_sponser.'", "tournament_teams":"'.$tour_teams.'"},';
 			}			
 	    }
 		

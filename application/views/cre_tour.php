@@ -179,9 +179,16 @@
 					<input type = "hidden" name  = "teams" id = "teams" value= "" >
 					<input type = "text" name  = "spons_name" placeholder = "Sponser Name" class = "form-control" >
 				
-				
-				
-				 <div class = "form-group">
+                  	<label for="inputEmail3" class="col-sm-12 col-xm-12 col-lg-2 col-md-2 control-label">City*:</label>
+                    <select required id = "load_city"  name = "city" class= "form-control" >
+						<option value= "">Choose city</option>
+						<?php   
+							foreach($city as $key => $value){
+								echo '<option  id = "'.$value['id'].'" value = "'.$value['id'].'">'.$value['name'].'</option>';
+							}
+						?>
+                    </select>
+
 				<label for="exampleInputPassword1">Choose Matches*</label>
                   <select multiple="multiple" id = "s_teams"  name="s_teams">
 				<?php echo $matches; ?>

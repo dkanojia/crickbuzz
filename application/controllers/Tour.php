@@ -12,29 +12,35 @@ class Tour extends CI_Controller {
 
 	public function create_tournament_submit()
 	{
-		    $data['tour_banner'] =  $_FILES['userfile']['name'];
+	    $data['tour_banner'] =  $_FILES['userfile']['name'];
+		
+		$d1 = $this->input->post('d1');
+		$d2 = $this->input->post('d2');
+		$m1 = $this->input->post('m1');
+		$m2 = $this->input->post('m2');
+		$y1 = $this->input->post('y1');
+		$y2 = $this->input->post('y2');
+		
+		$data['tour_name'] = $this->input->post('tour_name');
+		$data['tour_sponser'] = $this->input->post('spons_name');
+		$data['teams'] = $this->input->post('teams');
+		// echo '<script>alert("alert here")</script>';
+
+		$city=  $this->input->post('city');
+		$this->load->model('player_model');
+	    $city11 =  $this->player_model->cityByCode($city);
+		$data['place'] = $city11[0]['name'];
+		
+		$data['tour_start_date'] = date( "$d1-$m1-$y1");
+		$data['tour_end_date'] = date( "$d2-$m2-$y2");
+								//folder create if not exist 
+			$dir_ck = "./public/team_s_banner/".$data['tour_name'];
+			if (!file_exists($dir_ck)) {
+				mkdir($dir_ck, 0777, true);
+			}
 			
-			$d1 = $this->input->post('d1');
-			$d2 = $this->input->post('d2');
-			$m1 = $this->input->post('m1');
-			$m2 = $this->input->post('m2');
-			$y1 = $this->input->post('y1');
-			$y2 = $this->input->post('y2');
-			
-			$data['tour_name'] = $this->input->post('tour_name');
-			$data['tour_sponser'] = $this->input->post('spons_name');
-			$data['teams'] = $this->input->post('teams');
-			echo '<script>alert("alert here")</script>';
-			$data['tour_start_date'] = date( "$d1-$m1-$y1");
-			$data['tour_end_date'] = date( "$d2-$m2-$y2");
-									//folder create if not exist 
-				$dir_ck = "./public/team_s_banner/".$data['tour_name'];
-				if (!file_exists($dir_ck)) {
-					mkdir($dir_ck, 0777, true);
-				}
-				
-	//image upload code here
-	   $config =  array(
+		//image upload code here
+	   	$config =  array(
                   'upload_path'     => $dir_ck,
                   'allowed_types'   => "gif|jpg|png|jpeg",
                   'overwrite'       => TRUE,
@@ -42,28 +48,20 @@ class Tour extends CI_Controller {
                   'max_height'      => "768",
                   'max_width'       => "1024"  
                 );    
-				$this->load->library('upload', $config);
-				if($this->upload->do_upload())
-				{
-					//insert in data base64_decode
-					$this->load->model('tournament_model');
-					$this->tournament_model->create_tour($data);
-						$data['message_succ'] = ' successfully registered';
-				$this->load->view('success_player');
-							
-				}
-				else
-				{
-				$error = array('error' => $this->upload->display_errors());
-				$this->load->view('cre_tour', $error);
-				}  
-        
-			
-					
-			
-			
-	
+		$this->load->library('upload', $config);
 		
+		if($this->upload->do_upload()){
+			//insert in data base64_decode
+			$this->load->model('tournament_model');
+			$this->tournament_model->create_tour($data);
+				$data['message_succ'] = ' successfully registered';
+			$this->load->view('success_player');
+
+		}else{
+
+			$error = array('error' => $this->upload->display_errors());
+			$this->load->view('cre_tour', $error);
+		}  
 	}
 	
 	
@@ -91,7 +89,9 @@ class Tour extends CI_Controller {
 		$this->load->model('match_model');
 		$data['matches'] = $this->match_model->getAllMatchList();
 		
-		
+		$this->load->model('tournament_model');
+		$data['city'] = $this->tournament_model->load_cities();
+
 		$this->load->view('header');
 		$this->load->view('sidebar');
 		$this->load->view('cre_tour' , $data);

@@ -39,6 +39,15 @@ class Tournament_model extends CI_Model {
 		return $data;
 		
     } 
+
+    function load_cities(){
+		$this->db->select('*');
+		$this->db->from('cities');
+		$this->db->where('state_id',33);
+		$query = $this->db->get();
+		return $query->result_array();
+    } 
+
 	function past(){
 		$this->db->select('*');
 		$this->db->from('tournament');
