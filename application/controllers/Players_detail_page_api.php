@@ -14,7 +14,7 @@ class Players_detail_page_api extends CI_Controller {
     //     return call_user_func_array(array($this, $methodToCall), $params);
     // }
 
-	public function index($id)
+	public function index()
 	{
 		$id = $this->input->post_get('id', TRUE);
         $this->load->model('players_detail_page_api_model');

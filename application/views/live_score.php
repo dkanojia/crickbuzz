@@ -58,7 +58,7 @@
         <!-- Horizontal Form -->
         <div class="box box-info">
           <div class="box-header with-border">
-            <center> <h3 class="box-title"> Please Update Live Socre</h3><center>
+            <center> <h3 class="box-title"> Please Update Live Score</h3><center>
           </div>
           <!-- /.box-header -->
           <!-- form start -->

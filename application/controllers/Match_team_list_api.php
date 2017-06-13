@@ -14,7 +14,7 @@ class Match_team_list_api extends CI_Controller {
     //     return call_user_func_array(array($this, $methodToCall), $params);
     // }
 
-	public function index($id)
+	public function index()
 	{	
 		$id = $this->input->post_get('id', TRUE);
 		$this->load->model('match_team_list_api_model');

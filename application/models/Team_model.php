@@ -399,19 +399,6 @@ $str = $str . '<tr><td>'.$ii.'</td><td><img height = "60px" width = "60px" src =
 			$query2 = $this->db->get();
 			$data2 = $query2->row();
 
-			// $str = $str . '<tr>
-			// 	<td>'.$ii.'</td>
-			// 	<td><img height= "50px" width = "60px" src = "http://'.getenv('HTTP_HOST').'/cric/public/team_logo/'.$value['team_name'].'/'.$value['team_logo'].'"></td>
-			// 	<td>'.$value['team_name'].'</td>
-			// 	<td>'.$value['captain'].'</td>
-			// 	<td>'.$value['vice_captain'].'</td>
-			// 	<td>'.$value['country'].'</td>
-			// 	<td>'.$value['state'].'</td>
-			// 	<td>'.$value['city'].'</td>
-			// 	<td>'.$count_i.'</td>
-			// 	<td>'.$value['created_on'].'</td>
-			// 	<td><button class= "btn btn-success btn-xs"><a href = "http://'.getenv('HTTP_HOST').'/cric/add_team_players/'.$value['tid'].'">VIEW</a></button><button  class= "btn btn-danger btn-xs"><a href = "'.$value['tid'].'">DELETE</a></button></td></tr>';
-
 			$str = $str . '
 					<div class = "row">
                         <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">
@@ -438,4 +425,79 @@ $str = $str . '<tr><td>'.$ii.'</td><td><img height = "60px" width = "60px" src =
 		
 		return $str;
 	}
+
+	function getBowlerListOfFirstTeam($t_id){
+		$this->db->select('*');
+		$this->db->from('team_players');
+		$this->db->like('team_id', $t_id);
+		
+		$query = $this->db->get();
+		$data = $query->result_array();
+		
+		$str = '';
+		$ii =1;
+		foreach($data as $value){
+		
+			$this->db->select('*');
+			$this->db->from('players');
+			$this->db->like('pid', $value['player_id']);
+			
+			$query2 = $this->db->get();
+			$data2 = $query2->row();
+
+			$str = $str . '<option value = "'.$data2->pid.'">'.$data2->name.'</option>';
+
+			$ii++;
+		}
+		return $str;
+	}
+
+	function getBowlerListOfSecondTeam($id,$t_id){
+
+		$this->db->select('*');
+		$this->db->from('matches');
+		$this->db->where('intId' , $id);
+
+		$query = $this->db->get();
+		$data =$query->result_array();
+
+		$team1_id = '';
+		$team2_id = '';
+
+		$str = '';
+		foreach($data as $value){
+			$team1_id = $value['team1_id'];
+			$team2_id = $value['team2_id'];
+		}
+
+		$this->db->select('*');
+		$this->db->from('team_players');
+
+		if($t_id == $team1_id)
+			$this->db->like('team_id', $team1_id); 
+		else
+			$this->db->like('team_id', $team2_id);
+
+		$query2 = $this->db->get();
+		$data2 =$query2->result_array();
+		
+		$str = '';
+		$ii =1;
+		foreach($data2 as $value){
+		
+			$this->db->select('*');
+			$this->db->from('players');
+			$this->db->like('pid', $value['player_id']);
+			
+			$query2 = $this->db->get();
+			$data2 = $query2->row();
+
+			$str = $str . '<option value = "'.$data2->pid.'">'.$data2->name.'</option>';
+
+			$ii++;
+		}
+		return $str;
+	}
+
+
 }

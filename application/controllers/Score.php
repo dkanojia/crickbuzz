@@ -163,14 +163,21 @@ class Score extends CI_Controller {
 		    $team1_name = $this->team_model->teamnameById($tid);
 		    $data_for_echo['toss_winning_team_name'] = $team1_name;
 		    $data_for_echo['team_name'] = $team1_name;
+			
+			$this->load->model('team_model');
+			$data['bowler_list'] = $this->team_model->getBowlerListOfSecondTeam($id,$tid);
+			
 		}else{
 			$this->load->model('match_model');
 			$team2_name = $this->match_model->getSecondTeamName($id,$tid);
 		    $data_for_echo['toss_winning_team_name'] = $team2_name;
 			
+
 			$this->load->model('team_model');
 		    $team2_name = $this->team_model->teamnameById($tid);
 		    $data_for_echo['team_name'] = $team2_name;
+			
+			$data['bowler_list'] = $this->team_model->getBowlerListOfFirstTeam($tid);
 		}
 
 		$batsman_list = '';

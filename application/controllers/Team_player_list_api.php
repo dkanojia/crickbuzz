@@ -15,7 +15,7 @@ class Team_player_list_api extends CI_Controller {
     // }
 
 
-	public function index($id)
+	public function index()
 	{	
 		$id = $this->input->post_get('id', TRUE);
 		$this->load->model('team_player_list_api_model');
