@@ -33,15 +33,20 @@ class Team_player_list_api_model extends CI_Model {
 						
 			if(isset($player[0]['pid'])){ $player_id = $player[0]['pid'];}else{$player[0]['pid'] = '';}
 			if(isset($player[0]['name'])){ $player_name = $player[0]['name'];}else{$player[0]['name'] = '';}
+			if(isset($player[0]['profile_url'])){ $player_name = $player[0]['profile_url'];}else{$player[0]['profile_url'] = '';}
 
-			$player_list = $player_list . '{ "'.$ii.'_player_id":"'.$player[0]['pid'].'", "'.$ii.'_player_name":"'.$player[0]['name'].'"},';
+			$img_src = "http://".getenv('HTTP_HOST')."/cric/public/profile_img/".$player[0]['name'].'/'.$player[0]['profile_url'];
+
+
+			$player_list = $player_list . '{ "player_id":"'.$player[0]['pid'].'", "player_name":"'.$player[0]['name'].'" , "player_image":"'.$img_src.'"},';
+			$ii++;
 	    }
 		
 		$player_list = rtrim( $player_list , ',');
 		$player_list = '['.$player_list.']';
 
-		$data = '{"player_list": '.$player_list.'}';
-		echo '{"response":"true" , "data": '.$data.'}';
+		// $data = '{"player_list": '.$player_list.'}';
+		echo '{"response":"true" , "player_list": '.$player_list.'}';
 	}
 }
 ?>

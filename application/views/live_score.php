@@ -157,6 +157,16 @@
                             </select>
                           </div>
                       </div>
+                      <div class="form-group">
+                        <label for="chose Extra Run" class="col-sm-2 control-label">Bowler List</label>
+                          <div class="col-sm-10">
+                            <select onchange = "" id = "bowler_list_id"  class= "form-control" name  = "bowler_list" style="width: 150px; " >
+                              <option value= "0" >Choose Bowler
+                              </option>
+                              <?php echo $bowler_list; ?>
+                            </select>
+                          </div>
+                      </div>
                       <div class = "row">
                         <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">
                           Batsman 

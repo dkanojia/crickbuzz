@@ -21,7 +21,7 @@ class Home_matches_page_api_model extends CI_Model {
 		$upcoming = '';
 		$past = '';
 		$all = '';
-		
+			
 		foreach($data as $key => $value) {
 			$m_id = $value['intId'];
 			$team1_id = $value['team1_id'];
@@ -132,14 +132,14 @@ class Home_matches_page_api_model extends CI_Model {
 			
 			// if($start_date1 < time() && $end_date1 > time()){		
 			if(($status == 1) || ($status == 2) ){		
-				$ongoing = $ongoing . '{ "match_id":"'.$m_id.'"  , "start_date":"'.$start_date.'"  , "end_date":"'.$end_date.'"  , "start_time" : "'.$start_time.'" , "end_time" : "'.$end_time.'" , "status" : "ongoing" , "ground_name":"'.$ground_name.'" , "overs":"'.$overs.'" , "place":"'.$place.'" , "tournament_name":"'.$tourna[0]['tour_name'].'" ,"team1_name":"'.$team1[0]['team_name'].'" ,"team2_name":"'.$team2[0]['team_name'].'" ,"team1_logo":"'.$team1_logo_img_src.'" ,"team2_logo":"'.$team2_logo_img_src.'", "description":"'.$value['description'].'", "banner_image":"'.$img_src.'", "title":"'.$value['title'].'"},';
+				$ongoing = $ongoing . '{ "match_id":"'.$m_id.'"  , "start_date":"'.$start_date.'"  , "end_date":"'.$end_date.'"  , "start_time" : "'.$start_time.'" , "end_time" : "'.$end_time.'" , "status" : "ongoing" , "ground_name":"'.$ground_name.'" , "overs":"'.$overs.'" , "place":"'.$place.'" , "tournament_name":"'.$tourna[0]['tour_name'].'" , "team1_id":"'.$team1_id.'" , "team2_id":"'.$team2_id.'" , "team1_name":"'.$team1[0]['team_name'].'" ,"team2_name":"'.$team2[0]['team_name'].'" ,"team1_logo":"'.$team1_logo_img_src.'" ,"team2_logo":"'.$team2_logo_img_src.'", "description":"'.$value['description'].'", "banner_image":"'.$img_src.'", "title":"'.$value['title'].'"},';
 
 
 			}elseif($status == 0){
 				
-				$upcoming = $upcoming . '{ "match_id":"'.$m_id.'"  , "start_date":"'.$start_date.'"  , "end_date":"'.$end_date.'"  , "start_time" : "'.$start_time.'" , "end_time" : "'.$end_time.'" , "status" : "upcoming" ,"ground_name":"'.$ground_name.'" , "overs":"'.$overs.'" , "place":"'.$place.'" , "tournament_name":"'.$tourna[0]['tour_name'].'" ,"team1_name":"'.$team1[0]['team_name'].'" ,"team2_name":"'.$team2[0]['team_name'].'" ,"team1_logo":"'.$team1_logo_img_src.'" ,"team2_logo":"'.$team2_logo_img_src.'", "description":"'.$value['description'].'", "banner_image":"'.$img_src.'", "title":"'.$value['title'].'"},';
+				$upcoming = $upcoming . '{ "match_id":"'.$m_id.'"  , "start_date":"'.$start_date.'"  , "end_date":"'.$end_date.'"  , "start_time" : "'.$start_time.'" , "end_time" : "'.$end_time.'" , "status" : "upcoming" ,"ground_name":"'.$ground_name.'" , "overs":"'.$overs.'" , "place":"'.$place.'" , "tournament_name":"'.$tourna[0]['tour_name'].'" , "team1_id":"'.$team1_id.'" , "team2_id":"'.$team2_id.'" , "team1_name":"'.$team1[0]['team_name'].'" ,"team2_name":"'.$team2[0]['team_name'].'" ,"team1_logo":"'.$team1_logo_img_src.'" ,"team2_logo":"'.$team2_logo_img_src.'", "description":"'.$value['description'].'", "banner_image":"'.$img_src.'", "title":"'.$value['title'].'"},';
 			}elseif($status == 4){
-				$past = $past . '{ "match_id":"'.$m_id.'"  , "start_date":"'.$start_date.'"  , "end_date":"'.$end_date.'"  , "start_time" : "'.$start_time.'" , "end_time" : "'.$end_time.'" , "status" : "highlights" , "ground_name":"'.$ground_name.'" , "overs":"'.$overs.'" , "place":"'.$place.'" , "tournament_name":"'.$tourna[0]['tour_name'].'" ,"team1_name":"'.$team1[0]['team_name'].'" ,"team2_name":"'.$team2[0]['team_name'].'" ,"team1_logo":"'.$team1_logo_img_src.'" ,"team2_logo":"'.$team2_logo_img_src.'", "description":"'.$value['description'].'", "banner_image":"'.$img_src.'", "title":"'.$value['title'].'"},';
+				$past = $past . '{ "match_id":"'.$m_id.'"  , "start_date":"'.$start_date.'"  , "end_date":"'.$end_date.'"  , "start_time" : "'.$start_time.'" , "end_time" : "'.$end_time.'" , "status" : "highlights" , "ground_name":"'.$ground_name.'" , "overs":"'.$overs.'" , "place":"'.$place.'" , "tournament_name":"'.$tourna[0]['tour_name'].'" , "team1_id":"'.$team1_id.'" , "team2_id":"'.$team2_id.'" , "team1_name":"'.$team1[0]['team_name'].'" ,"team2_name":"'.$team2[0]['team_name'].'" ,"team1_logo":"'.$team1_logo_img_src.'" ,"team2_logo":"'.$team2_logo_img_src.'", "description":"'.$value['description'].'", "banner_image":"'.$img_src.'", "title":"'.$value['title'].'"},';
 			}			
 	    }
 		

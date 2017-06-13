@@ -25,17 +25,18 @@ class Players_detail_page_api_model extends CI_Model {
 		foreach($data as $key => $value) {
 
 			// if(isset($player[0]['pid'])){ $player_id = $player[0]['pid'];}else{$player[0]['pid'] = '';}
+			$img_src = "http://".getenv('HTTP_HOST')."/cric/public/profile_img/".$value['name'].'/'.$value['profile_url'];
 
-			$player_detail = $player_detail . '{ "id":"'.$value['pid'].'", "player_name":"'.$value['name'].'", "player_profile_url":"'.$value['profile_url'].'", "player_role":"'.$value['role'].'", "player_mobile":"'.$value['mobile'].'", "player_email":"'.$value['email'].'", "player_city":"'.$value['city'].'", "player_state":"'.$value['state'].'", "player_country":"'.$value['country'].'", "player_best_bat":"'.$value['best_ball'].'", "player_dob":"'.$value['dob'].'", "player_team":"'.$value['team'].'", "player_bat":"'.$value['bat'].'", "player_bowler":"'.$value['bowler'].'", "player_wktkeep":"'.$value['wktkeep'].'"},';
+			$player_detail = $player_detail . '{ "id":"'.$value['pid'].'", "player_name":"'.$value['name'].'", "player_profile_url":"'.$img_src.'", "player_role":"'.$value['role'].'", "player_mobile":"'.$value['mobile'].'", "player_email":"'.$value['email'].'", "player_city":"'.$value['city'].'", "player_state":"'.$value['state'].'", "player_country":"'.$value['country'].'", "player_best_bat":"'.$value['best_ball'].'", "player_dob":"'.$value['dob'].'", "player_team":"'.$value['team'].'", "player_bat":"'.$value['bat'].'", "player_bowler":"'.$value['bowler'].'", "player_wktkeep":"'.$value['wktkeep'].'"},';
 	    }
 		
 		$player_detail = rtrim( $player_detail , ',');
 
 		$player_detail = '['.$player_detail.']';
 
-		$data = '{"player_detail": '.$player_detail.'}';
+		// $data = '{"player_detail": '.$player_detail.'}';
 
-		echo '{"response":"true" , "data": '.$data.'}';
+		echo '{"response":"true" , "player_detail": '.$player_detail.'}';
 	}
 	//echo $res;
 	//echo '{"response":"true" , "data": }';

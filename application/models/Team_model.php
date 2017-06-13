@@ -484,18 +484,18 @@ $str = $str . '<tr><td>'.$ii.'</td><td><img height = "60px" width = "60px" src =
 		$str = '';
 		$ii =1;
 		foreach($data2 as $value){
-		
 			$this->db->select('*');
 			$this->db->from('players');
 			$this->db->like('pid', $value['player_id']);
 			
-			$query2 = $this->db->get();
-			$data2 = $query2->row();
+			$query3 = $this->db->get();
+			$data3 = $query3->row();
 
-			$str = $str . '<option value = "'.$data2->pid.'">'.$data2->name.'</option>';
+			$str = $str . '<option value = "'.$data3->pid.'">'.$data3->name.'</option>';
 
 			$ii++;
 		}
+		
 		return $str;
 	}
 
