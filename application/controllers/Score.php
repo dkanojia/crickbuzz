@@ -183,7 +183,8 @@ class Score extends CI_Controller {
 		$batsman_list = '';
 
 		$this->load->model('team_model');
-		$p_list = $this->team_model->getListOfBatsman($tid);
+		// $p_list = $this->team_model->getListOfBatsman($tid);
+		$p_list = $this->team_model->getListOfBatsmanInDrpDown($tid);
 		$data_for_echo['team_list'] = $p_list;
 		
 		$data_for_echo['m_id'] = $id;
@@ -224,17 +225,98 @@ class Score extends CI_Controller {
 			$data_for_echo['bowler_list'] = $this->team_model->getBowlerListOfFirstTeam($tid);
 		}
 
+
+
 		$batsman_list = '';
 
 		$this->load->model('team_model');
-		$p_list = $this->team_model->getListOfBatsman($tid);
+		// $p_list = $this->team_model->getListOfBatsman($tid);
+		$p_list = $this->team_model->getListOfBatsmanInDrpDown($tid);
 		$data_for_echo['team_list'] = $p_list;
 		
 		$data_for_echo['m_id'] = $id;
 		$data_for_echo['team_id'] = $tid;
 		$data_for_echo['ininng_value'] = $in_value;
 
+		// Score Table
+		$score_data['match_id'] = $id;
+		$score_data['team_id'] =  $tid;
+		$bt_id =  $this->input->post('batsman_list');
+		$score_data['player_id'] =  $bt_id;
+		$score_data['inning'] =  $in_value;
+		$score_data['over'] =  $this->input->post('quant[2]');
+		$ball_no = $this->input->post('quant[1]');
+		$score_data['ball'] =  $ball_no;
+
+		$run = $this->input->post('score_value');
+		$score_data['run'] = $run;
+
+		// $extra_run = $this->input->post('extra_run');
+		// $bowler_id = $this->input->post('bowler_list');
+		// $p_status = $this->input->post('p_staus_name');
+
+		$is_six = 0;
+		$is_four = 0;
+		$wicket = 0;
+		$is_catch = 0;
+		$is_stump = 0;
+		$is_catch = 0;
+		$is_run_out = 0;
+
+		if($run == 6)
+			$is_six = 1;
+		elseif($run == 4)
+			$is_four = 1;
+		elseif($run == 0){
+
+		}
+
+		$score_data['is_six'] =  $is_six;
+		$score_data['is_four'] =  $is_four;
+		$score_data['wicket'] =  $wicket;
+		$score_data['is_catch'] =  $is_catch;
+		$score_data['is_stump'] =  $is_stump;
+		$score_data['is_run_out'] =  $is_run_out;
+
+		$this->load->model('score_model');
+	    $this->score_model->setscore($score_data);
+
+	    $player_score = $this->score_model->getPlayerScore($bt_id);
+	    echo $player_score;
+	    exit;
+		// // Batsman Score
+		$bt_score_data['player_id'] =  $bt_id;
+		$bt_score_data['match_id'] =  $id;
+		$bt_score_data['run'] =  $run;
+		$bt_score_data['ball'] =  $total_ball;
+		$bt_score_data['four_count'] =  $this->input->post();
+		$bt_score_data['six_count'] =  $this->input->post();
 		
+		// Filder Score
+		// $f_score_data['player_id'] =  $this->input->post();
+		// $f_score_data['match_id'] =  $this->input->post();
+		// $f_score_data['total_catches'] =  $this->input->post();
+		// $f_score_data['total_run_out'] =  $this->input->post();
+
+
+		// // Bowler Score
+		// $bw_score_data['intId'] =  $this->input->post();
+		// $bw_score_data['player_id'] =  $this->input->post();
+		// $bw_score_data['match_id'] =  $this->input->post();
+		// $bw_score_data['wicket'] =  $this->input->post();
+		// $bw_score_data['over'] =  $this->input->post();
+		// $bw_score_data['ball'] =  $this->input->post();
+		// $bw_score_data['economy_rate'] =  $this->input->post();
+		// $bw_score_data['hattrick_count'] =  $this->input->post();
+
+		// Match Score 
+		// $mtch_score_data['id'] =  $this->input->post();
+		// $mtch_score_data['match_id'] =  $this->input->post();
+		// $mtch_score_data['team_id'] =  $this->input->post();
+		// $mtch_score_data['team_id'] =  $this->input->post();
+
+
+
 
 		$this->load->view('header');
 		$this->load->view('sidebar');

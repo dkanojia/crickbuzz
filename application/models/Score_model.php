@@ -164,6 +164,7 @@ class Score_model extends CI_Model {
 		return $data;
 		
     } 
+    
 	function getMatchTeams($id){
 		$this->db->select('*');
 		$this->db->from('matches');
@@ -195,6 +196,58 @@ class Score_model extends CI_Model {
 	function deletescore(){
 		
     } 
+
+    function getPlayerScore($pid){
+    	$this->db->select('*');
+    	$this->db->from('batsman_score');
+    	$this->db->where('player_id', $pid);
+
+    	$query = $this->db->get();
+    	$data = $query->result_array();
+
+    	$ii = 0;
+	   	
+	   	foreach($data as $value1){
+			$ii++;	
+		}
+
+		return $ii;
+    }
+
+     function setPlayerScore($is_exist,$data){
+    	
+    	if($is_exist == 1){
+			$this->db->insert('score' , $data);
+    	}
+		else{
+			$pl_id = $bt_score_data['player_id'];
+			$mch_id = $bt_score_data['match_id'];
+			$run = $bt_score_data['run'];
+			$ball = $bt_score_data['ball'];
+			$four_count = $bt_score_data['four_count'];
+			$six_count = $bt_score_data['six_count'];
+			
+
+			$this->db->where('player_id', $pid);
+			$this->db->set('player_id', $pid);       
+			$this->db->set('match_id', $mch_id);       
+			$this->db->set('run', $run);       
+			$this->db->set('ball', $ball);       
+			$this->db->set('four_count', $four_count);       
+			$this->db->set('six_count', $six_count);       
+			$this->db->update('batsman_score');
+
+
+
+			$name = $data['name'];
+			$battingStyle = $data['battingStyle'];
+			$bowlingStyle = $data['bowlingStyle'];
+			$this->db->where('pid', $id);
+			$this->db->set('name' , $name);
+			$this->db->set('bat' , $battingStyle);
+			$this->db->set('bowler' , $bowlingStyle);
+			$this->db->update('players');   
+		}
+    }
 	
-   	
 }

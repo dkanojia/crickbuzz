@@ -143,19 +143,43 @@
                             </div>
                           </div>
                       </div>
-                       <div class="form-group">
-                        <label for="chose Extra Run" class="col-sm-2 control-label">Extra Run </label>
-                          <div class="col-sm-10">
-                            <select onchange = "" id = "t_s_team"  class= "form-control" name  = "toss_winner_team" style="width: 150px; " >
-                              <option value= "0" >Chosse Type
-                              </option>
-                              <option value= "1" >White Ball
-                              </option>
-                              <option value= "2" >No Ball
-                              </option>
-                            </select>
-                          </div>
+                      <div class = "row">
+                        <div class = "col-lg-12 col-md-12 col-xm-12 col-sm-12">
+                          <hr> 
+                        </div>
                       </div>
+                      <div class = "row">
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">
+                          Extra Runs (If Any?) 
+                        </div>
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
+                          <div class="form-group">
+                                <select onchange = "" id = "extra_run_id"  class= "form-control" name  = "extra_run" style="width: 150px; " >
+                                  <option value= "0" >Chosse Type
+                                  </option>
+                                  <option value= "1" >White Ball
+                                  </option>
+                                  <option value= "2" >No Ball
+                                  </option>
+                                </select>
+                          </div>
+                        </div>
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
+                          Extra Score (If Any?)
+                        </div>
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
+                          <input type="text" name="extra_score_value" class="form-control input-number" value="0" min="0" max="6">
+                          <!-- <input type="text" required name  = "bowl" class="form-control" id="bowl_id" placeholder="1"> -->
+                        </div>
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">
+                          <!-- Bowler's Name -->
+                        </div>
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
+                          <!-- Ball Thrown -->
+                        </div>
+                      </div>
+
+                            <!-- <input type="text" name="extra_score_value" class="form-control input-number" value="0" min="0" max="6"> -->
                       <div class = "row">
                         <div class = "col-lg-12 col-md-12 col-xm-12 col-sm-12">
                           <hr> 
@@ -178,7 +202,8 @@
                           Ball Thrown
                         </div>
                         <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
-                         <input type="text" required name  = "bowl" class="form-control" id="bowl_id" placeholder="1">
+                          <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="100">
+                          <!-- <input type="text" required name  = "bowl" class="form-control" id="bowl_id" placeholder="1"> -->
                         </div>
                         <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">
                           <!-- Bowler's Name -->
@@ -192,9 +217,11 @@
                           <hr> 
                         </div>
                       </div>
-                      <div class = "row">
+                     <!--  <div class = "row">
                         <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">
                           Batsman 
+                        </div>
+                        <div class = "col-lg-1 col-md-1 col-xm-12 col-sm-12" style="text-align: right;">
                         </div>
                         <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
                           Batsman's Name
@@ -206,10 +233,43 @@
                           Playing Status
                         </div>
                         <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">
-                          <!-- Bowler's Name -->
+                          Bowler's Name
                         </div>
                         <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
-                          <!-- Ball Thrown -->
+                          Ball Thrown
+                        </div>
+                      </div> -->
+                       <div class = "row">
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">
+                          Batsman 
+                        </div>
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
+                           <div class="form-group">
+                              <select onchange = "" id = "batsman_list_id"  class= "form-control" name  = "batsman_list" style="width: 150px; " >
+                                <option value= "0" >Choose Batsman
+                                </option>
+                                <?php echo $team_list; ?>
+                              </select>
+                          </div>
+                        </div>
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
+                          Score Value
+                        </div>
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
+                          <input type="text" name="score_value" class="form-control input-number" value="0" min="0" max="6">
+                        </div>
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">
+                          Playing Status
+                        </div>
+                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
+                          <select onchange = "" id = "p_status_id"  class= "form-control" name  = "p_staus_name" style="width: 150px; " >
+                            <option value= "0" >Choose Status
+                            </option>
+                            <option value= "1" >Out
+                            </option>
+                            <option value= "2" >Not Out
+                            </option>
+                          </select>
                         </div>
                       </div>
                       <div class = "row">
@@ -217,7 +277,16 @@
                           <hr> 
                         </div>
                       </div>
-                      <?php echo $team_list; ?> 
+                      <!-- <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
+                        <div class="form-group">
+                              <select onchange = "" id = "batsman_list_id"  class= "form-control" name  = "batsman_list" style="width: 150px; " >
+                                <option value= "0" >Choose Batsman
+                                </option>
+                                <?php echo $team_list; ?>
+                              </select>
+                        </div>
+                      </div> -->
+                      <!-- <?php echo $team_list; ?>  -->
                       
                       <!-- <div class = "row">
                         <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">

@@ -402,25 +402,53 @@ $str = $str . '<tr><td>'.$ii.'</td><td><img height = "60px" width = "60px" src =
 			$str = $str . '
 					<div class = "row">
                         <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">
-                          Batsman '.$ii.': 
+                          Batsman '.$ii.':  
+                        </div>
+                        <div class = "col-lg-1 col-md-1 col-xm-12 col-sm-12" style="text-align: right;">
+	            			<input name="is_playing" id= "'.$data2->pid.'" value="'.$data2->pid.'" type = "checkbox" class = "checkbox">
                         </div>
                         <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
                           '.$data2->name.'
                         </div>
                         <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
-                          <input type="text" name  = "batscore" class="form-control" id="batscore_id" placeholder="">
+                          <input type="text" name  = "batscorename'.$data2->pid.'" class="form-control" id="batscore_'.$data2->pid.'" placeholder="">
                         </div>
                         <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
-                          <input type="text" name  = "outstatus" class="form-control" id="outstatus_id" placeholder="P/O">
+                          <input type="text" name  = "outstatusname'.$data2->pid.'" class="form-control" id="outstatus_'.$data2->pid.'" placeholder="P/O">
                         </div>
                         <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">
                         </div>
-                        <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
+                        <div class = "col-lg-1 col-md-1 col-xm-12 col-sm-12">
                         </div>
                       </div>';			
 			$ii++;
 		}
 		
+		return $str;
+	}
+
+	function getListOfBatsmanInDrpDown($t_id){
+		$this->db->select('*');
+		$this->db->from('team_players');
+		$this->db->like('team_id', $t_id);
+		
+		$query = $this->db->get();
+		$data = $query->result_array();
+		
+		$str = '';
+		$ii =1;
+		foreach($data as $value){
+		
+			$this->db->select('*');
+			$this->db->from('players');
+			$this->db->like('pid', $value['player_id']);
+			
+			$query2 = $this->db->get();
+			$data2 = $query2->row();
+
+			$str = $str . '<option value = "'.$data2->pid.'">'.$data2->name.'</option>';			
+			$ii++;
+		}
 		return $str;
 	}
 
