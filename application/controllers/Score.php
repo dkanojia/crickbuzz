@@ -165,7 +165,7 @@ class Score extends CI_Controller {
 		    $data_for_echo['team_name'] = $team1_name;
 			
 			$this->load->model('team_model');
-			$data['bowler_list'] = $this->team_model->getBowlerListOfSecondTeam($id,$tid);
+			$data_for_echo['bowler_list'] = $this->team_model->getBowlerListOfSecondTeam($id,$tid);
 			
 		}else{
 			$this->load->model('match_model');
@@ -177,7 +177,7 @@ class Score extends CI_Controller {
 		    $team2_name = $this->team_model->teamnameById($tid);
 		    $data_for_echo['team_name'] = $team2_name;
 			
-			$data['bowler_list'] = $this->team_model->getBowlerListOfFirstTeam($tid);
+			$data_for_echo['bowler_list'] = $this->team_model->getBowlerListOfFirstTeam($tid);
 		}
 
 		$batsman_list = '';
@@ -185,12 +185,60 @@ class Score extends CI_Controller {
 		$this->load->model('team_model');
 		$p_list = $this->team_model->getListOfBatsman($tid);
 		$data_for_echo['team_list'] = $p_list;
+		
+		$data_for_echo['m_id'] = $id;
+		$data_for_echo['team_id'] = $tid;
+		$data_for_echo['ininng_value'] = $in_value;
 
 		
 
 		$this->load->view('header');
 		$this->load->view('sidebar');
 		$this->load->view('live_score',$data_for_echo);
+		$this->load->view('rightsidebar');
+		$this->load->view('footer');
+		$this->load->view('globaljs');
+	}
+
+	public function updating_live_score($id,$tid,$in_value)
+	{	
+		if($in_value == 1){
+			$this->load->model('team_model');
+		    $team1_name = $this->team_model->teamnameById($tid);
+		    $data_for_echo['toss_winning_team_name'] = $team1_name;
+		    $data_for_echo['team_name'] = $team1_name;
+			
+			$this->load->model('team_model');
+			$data_for_echo['bowler_list'] = $this->team_model->getBowlerListOfSecondTeam($id,$tid);
+			
+		}else{
+			$this->load->model('match_model');
+			$team2_name = $this->match_model->getSecondTeamName($id,$tid);
+		    $data_for_echo['toss_winning_team_name'] = $team2_name;
+			
+		    
+			$this->load->model('team_model');
+		    $team2_name = $this->team_model->teamnameById($tid);
+		    $data_for_echo['team_name'] = $team2_name;
+			
+			$data_for_echo['bowler_list'] = $this->team_model->getBowlerListOfFirstTeam($tid);
+		}
+
+		$batsman_list = '';
+
+		$this->load->model('team_model');
+		$p_list = $this->team_model->getListOfBatsman($tid);
+		$data_for_echo['team_list'] = $p_list;
+		
+		$data_for_echo['m_id'] = $id;
+		$data_for_echo['team_id'] = $tid;
+		$data_for_echo['ininng_value'] = $in_value;
+
+		
+
+		$this->load->view('header');
+		$this->load->view('sidebar');
+		$this->load->view('updating_live_score',$data_for_echo);
 		$this->load->view('rightsidebar');
 		$this->load->view('footer');
 		$this->load->view('globaljs');

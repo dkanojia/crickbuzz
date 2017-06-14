@@ -408,16 +408,14 @@ $str = $str . '<tr><td>'.$ii.'</td><td><img height = "60px" width = "60px" src =
                           '.$data2->name.'
                         </div>
                         <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
-                          <input type="text" required name  = "batscore" class="form-control" id="batscore_id" placeholder="">
+                          <input type="text" name  = "batscore" class="form-control" id="batscore_id" placeholder="">
                         </div>
                         <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
-                          <input type="text" required name  = "outstatus" class="form-control" id="outstatus_id" placeholder="P/O">
+                          <input type="text" name  = "outstatus" class="form-control" id="outstatus_id" placeholder="P/O">
                         </div>
                         <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12" style="text-align: right;">
-                          BowlerName
                         </div>
                         <div class = "col-lg-2 col-md-2 col-xm-12 col-sm-12">
-                          <input type="text" required name  = "bowl" class="form-control" id="bowl_id" placeholder="1">
                         </div>
                       </div>';			
 			$ii++;
@@ -457,7 +455,6 @@ $str = $str . '<tr><td>'.$ii.'</td><td><img height = "60px" width = "60px" src =
 		$this->db->select('*');
 		$this->db->from('matches');
 		$this->db->where('intId' , $id);
-
 		$query = $this->db->get();
 		$data =$query->result_array();
 
@@ -469,14 +466,14 @@ $str = $str . '<tr><td>'.$ii.'</td><td><img height = "60px" width = "60px" src =
 			$team1_id = $value['team1_id'];
 			$team2_id = $value['team2_id'];
 		}
-
+		
 		$this->db->select('*');
 		$this->db->from('team_players');
 
 		if($t_id == $team1_id)
-			$this->db->like('team_id', $team1_id); 
+			$this->db->where('team_id', $team2_id);
 		else
-			$this->db->like('team_id', $team2_id);
+			$this->db->where('team_id', $team1_id); 
 
 		$query2 = $this->db->get();
 		$data2 =$query2->result_array();
@@ -486,16 +483,14 @@ $str = $str . '<tr><td>'.$ii.'</td><td><img height = "60px" width = "60px" src =
 		foreach($data2 as $value){
 			$this->db->select('*');
 			$this->db->from('players');
-			$this->db->like('pid', $value['player_id']);
+			$this->db->where('pid', $value['player_id']);
 			
 			$query3 = $this->db->get();
 			$data3 = $query3->row();
 
 			$str = $str . '<option value = "'.$data3->pid.'">'.$data3->name.'</option>';
-
 			$ii++;
 		}
-		
 		return $str;
 	}
 

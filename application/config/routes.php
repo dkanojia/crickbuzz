@@ -77,6 +77,7 @@ $route['score_updating_according_match'] = 'score/updating';
 $route['match_started/(:num)'] = 'score/match_parameters/$1';
 $route['set_parameter_match/(:num)'] = 'score/set_parameter_match/$1';
 $route['live_score/(:any)/(:any)/(:any)'] = 'score/live_score/$1/$2/$3';
+$route['updating_live_score/(:any)/(:any)/(:any)'] = 'score/updating_live_score/$1/$2/$3';
 	
 		/** user **/
 $route['submit_user_form'] = 'user/submit_user_form';
