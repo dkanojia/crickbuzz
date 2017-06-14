@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2017 at 04:43 PM
+-- Generation Time: Jun 14, 2017 at 03:54 PM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -48718,25 +48718,26 @@ CREATE TABLE IF NOT EXISTS `matches` (
   `tournament_id` varchar(100) NOT NULL,
   `status` int(11) NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `matches`
 --
 
 INSERT INTO `matches` (`intId`, `banner_image`, `title`, `team1_id`, `team2_id`, `overs`, `place`, `country`, `state`, `city`, `ground_name`, `start_time`, `end_time`, `start_date`, `end_date`, `description`, `online_link`, `tournament_id`, `status`, `created`) VALUES
-(1, 'image.png', 'title2', 1, 2, '20', 'jaipur', '', '', '', 'SMS cricket ground', '10:30:00', '12:00:00', '12-12-2016', '1-01-2017', 'testing data 1', 'www.youtube.com', '', 0, '2017-05-05 12:05:57'),
-(2, 'image.png', 'title1', 2, 3, '20', 'jaipur', '', '', '', 'chaugan stadium', '16:00:00', '18:00:00', '02-06-2017', '', 'testing data 2', 'www.youtube.com', '1', 1, '2017-05-05 12:10:50'),
-(3, 'image.png', 'title3', 2, 3, '20', 'jaipur', '', '', '', 'SMS ,cricket ground', '08:00:00', '11:00:00', '6-5-2017', '', 'testing data 3', 'www.youtube.com', '1', 0, '2017-05-05 12:15:45'),
-(4, '', '', 0, 0, '20', '', 'India', 'Rajasthan', 'Jahazpur', 'hhhhhhhhhhhhhhhhhh', '', '', '02-06-2017', '', '', 'http://youtube.link', '94', 2, '2017-05-30 18:54:17'),
-(9, '', 'hello', 0, 0, '30', '', 'India', 'Rajasthan', 'Jahazpur', 'aaaaaa', '15', '', '02-06-2017', '', '', 'http://youtube.link', '94', 3, '2017-05-30 19:01:38'),
-(10, '', 'qqqqq', 0, 0, '35', '6433,165,4', 'American Samoa', 'Manu''a', 'Ofu', 'dddddddddddddd', '4 : 20', '', '02-06-2017', '', '', 'http://youtube.link', '94', 4, '2017-05-30 19:07:37'),
+(1, 'image.png', 'title2', 1, 2, '20', '6433,165,4', '', '', '', 'SMS cricket ground', '10:30:00', '12:00:00', '12-12-2016', '1-01-2017', 'testing data 1', 'www.youtube.com', '', 0, '2017-05-05 12:05:57'),
+(2, 'image.png', 'title1', 2, 3, '20', '6433,165,4', '', '', '', 'chaugan stadium', '16:00:00', '18:00:00', '14-06-2017', '', 'testing data 2', 'www.youtube.com', '1', 1, '2017-05-05 12:10:50'),
+(3, 'image.png', 'title3', 2, 3, '20', '', '', '', '', 'SMS ,cricket ground', '08:00:00', '11:00:00', '6-5-2017', '', 'testing data 3', 'www.youtube.com', '1', 0, '2017-05-05 12:15:45'),
+(4, '', '', 1, 2, '20', '6433,165,4', 'India', 'Rajasthan', 'Jahazpur', 'hhhhhhhhhhhhhhhhhh', '', '', '14-06-2017', '', '', 'http://youtube.link', '94', 2, '2017-05-30 18:54:17'),
+(9, '', 'hello', 1, 0, '30', '6433,165,4', 'India', 'Rajasthan', 'Jahazpur', 'aaaaaa', '15', '', '14-06-2017', '', '', 'http://youtube.link', '94', 3, '2017-05-30 19:01:38'),
+(10, '', 'qqqqq', 0, 0, '35', '6433,165,4', 'American Samoa', 'Manu''a', 'Ofu', 'dddddddddddddd', '4 : 20', '', '12-06-2017', '', '', 'http://youtube.link', '94', 4, '2017-05-30 19:07:37'),
 (11, '', 'testmatch', 0, 0, '15', '3378,33,101', 'India', 'Rajasthan', 'Jaipur', 'testground', '18 : 40', '', '10-6-2018', '', '', 'http://youtube.link', '94', 0, '2017-06-01 04:48:38'),
 (12, '', 'ffffffffffff', 0, 0, '30', '3338,33,101', 'India', 'Rajasthan', 'Chatsu', 'aaaaaaaaaaa', '20 : 30', '', '7-10-2017', '', '', 'http://youtube.link', '94', 0, '2017-06-01 04:52:04'),
 (13, '', 'd', 1, 2, '35', '3377,33,101', 'India', 'Rajasthan', 'Jahazpur', 's', '1 : 5', '', '1-2-2018', '', '', 'http://youtube.link', '92', 0, '2017-06-01 05:23:08'),
-(14, '', '23', 2, 1, '30', '6523,232,11', 'Armenia', 'Aragatsotn', 'Talin', '23', '10 : 10', '', '02-06-2017', '', '', 'http://youtube.link', '92', 0, '2017-06-01 05:28:03'),
-(15, '', 'new testing match', 1, 2, '25', '3378,33,101', 'India', 'Rajasthan', 'Jaipur', 'sms', '3 : 15', '', '02-06-2017', '', '', 'http://youtube.link', '', 1, '2017-06-02 08:01:27'),
-(16, '', '23g', 2, 5, '35', '3377,33,101', 'India', 'Rajasthan', 'Jahazpur', 'aaaaaaaaaa', '7 : 40', '', '02-06-2017', '', '', 'http://youtube.link', '', 1, '2017-06-02 08:03:11');
+(14, '', '23', 4, 1, '30', '6523,232,11', 'Armenia', 'Aragatsotn', 'Talin', '23', '10 : 10', '', '14-06-2017', '', '', 'http://youtube.link', '92', 1, '2017-06-01 05:28:03'),
+(15, '', 'new testing match', 1, 2, '25', '3378,33,101', 'India', 'Rajasthan', 'Jaipur', 'sms', '3 : 15', '', '14-06-2017', '', '', 'http://youtube.link', '', 1, '2017-06-02 08:01:27'),
+(16, '', '23g', 1, 5, '35', '3377,33,101', 'India', 'Rajasthan', 'Jahazpur', 'aaaaaaaaaa', '7 : 40', '', '14-06-2017', '', '', 'http://youtube.link', '94', 0, '2017-06-02 08:03:11'),
+(17, 'logo.png', 'fdfdf', 1, 2, '25', '3378,33,101', 'India', 'Rajasthan', 'Jaipur', 'fffffffffffff', '6 : 25', '', '7-3-2019', '', '', 'http://youtube.link', '94', 0, '2017-06-12 09:50:34');
 
 -- --------------------------------------------------------
 
@@ -48752,7 +48753,47 @@ CREATE TABLE IF NOT EXISTS `match_parameter` (
   `non_striker_player_id` int(11) NOT NULL,
   `bowler_id` int(11) NOT NULL,
   `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `match_parameter`
+--
+
+INSERT INTO `match_parameter` (`id`, `match_id`, `toss_winner_id`, `striker_player_id`, `non_striker_player_id`, `bowler_id`, `created_on`) VALUES
+(7, 15, 1, 0, 0, 0, '2017-06-03 05:49:16'),
+(8, 15, 2, 0, 0, 0, '2017-06-03 05:56:47'),
+(9, 15, 1, 0, 0, 0, '2017-06-03 06:17:33'),
+(10, 15, 1, 0, 0, 0, '2017-06-03 06:18:07'),
+(11, 15, 1, 0, 0, 0, '2017-06-03 06:18:43'),
+(12, 15, 1, 0, 0, 0, '2017-06-03 06:20:00'),
+(13, 15, 2, 0, 0, 0, '2017-06-03 06:21:18'),
+(14, 15, 1, 0, 0, 0, '2017-06-03 06:22:08'),
+(15, 15, 1, 0, 0, 0, '2017-06-03 06:23:20'),
+(16, 15, 1, 0, 0, 0, '2017-06-03 06:24:25'),
+(17, 15, 0, 0, 0, 0, '2017-06-03 06:37:26'),
+(18, 15, 1, 0, 0, 0, '2017-06-03 06:38:03'),
+(19, 15, 1, 0, 0, 0, '2017-06-03 06:38:47'),
+(20, 15, 1, 0, 0, 0, '2017-06-03 06:40:54'),
+(21, 15, 1, 0, 0, 0, '2017-06-03 06:41:44'),
+(22, 15, 1, 0, 0, 0, '2017-06-03 06:42:18'),
+(23, 15, 2, 0, 0, 0, '2017-06-03 06:45:49'),
+(24, 15, 1, 0, 0, 0, '2017-06-03 06:47:14'),
+(25, 15, 1, 0, 0, 0, '2017-06-03 06:48:10'),
+(26, 15, 1, 0, 0, 0, '2017-06-03 06:49:57'),
+(27, 15, 1, 0, 0, 0, '2017-06-03 06:50:25'),
+(28, 15, 1, 0, 0, 0, '2017-06-03 06:52:43'),
+(29, 15, 2, 0, 0, 0, '2017-06-03 06:59:17'),
+(30, 15, 1, 0, 0, 0, '2017-06-03 07:00:19'),
+(31, 15, 1, 0, 0, 0, '2017-06-03 07:01:34'),
+(32, 15, 2, 0, 0, 0, '2017-06-03 07:02:35'),
+(33, 15, 1, 0, 0, 0, '2017-06-03 07:05:21'),
+(34, 15, 1, 0, 0, 0, '2017-06-12 05:46:09'),
+(35, 15, 1, 0, 0, 0, '2017-06-12 05:46:53'),
+(36, 15, 1, 0, 0, 0, '2017-06-12 05:47:06'),
+(37, 15, 1, 0, 0, 0, '2017-06-12 05:53:16'),
+(38, 15, 1, 0, 0, 0, '2017-06-12 05:54:23'),
+(39, 15, 1, 0, 0, 0, '2017-06-14 06:15:53'),
+(40, 15, 1, 0, 0, 0, '2017-06-14 06:30:02');
 
 -- --------------------------------------------------------
 
@@ -48792,7 +48833,7 @@ CREATE TABLE IF NOT EXISTS `players` (
   `bowler` varchar(100) NOT NULL DEFAULT '0',
   `wktkeep` varchar(100) NOT NULL DEFAULT '0',
   `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `players`
@@ -48807,7 +48848,8 @@ INSERT INTO `players` (`pid`, `name`, `profile_url`, `role`, `mobile`, `email`, 
 (31, 'naveen', 'doctor-5.jpg', '', '7894561230', 'naveen@gmail.com', 'Jaipur', 'Rajasthan', 'India', '', '', '12-12-1968', '', 'rbat', 'r-s-bow', 'wktkeep', '2017-05-03 09:27:36'),
 (32, 'naveen', 'doctor-5.jpg', '', '7894561230', 'naveen@gmail.com', 'Jaipur', 'Rajasthan', 'India', '', '', '12-12-1968', '', 'rbat', 'r-s-bow', 'wktkeep', '2017-05-03 09:30:12'),
 (33, 'ccas', 'doctor-2.jpg', '', '1234123412', '1234@gmail.com', 'Bulqize', 'Bulqize', 'Albania', '', '', '12-12-2012', '', 'left-hand-batsman', 'right-hand-faster', '0', '2017-05-08 13:18:06'),
-(34, 'ffffffffffffg@sdf.sf', 'logo.png', 'batsman', '22222222222', 'admin@gmail.com', 'Peshkopi', 'Dibre', 'Albania', '', '', '21-10-1111', 'demo1', 'right-hand-batsman', 'left-hand-sppiner', '0', '2017-06-01 06:31:57');
+(34, 'ffffffffffffg@sdf.sf', 'logo.png', 'batsman', '22222222222', 'admin@gmail.com', 'Peshkopi', 'Dibre', 'Albania', '', '', '21-10-1991', 'demo1', 'right-hand-batsman', 'left-hand-sppiner', '0', '2017-06-01 06:31:57'),
+(35, 'First Player', 'logo.png', 'batsman', '946222222', 'admin@gmail.com', 'Jaipur', 'Rajasthan', 'India', '', '', '21-10-1991', '', 'right-hand-batsman', 'left-hand-sppiner', '0', '2017-06-14 06:21:31');
 
 -- --------------------------------------------------------
 
@@ -48848,7 +48890,20 @@ CREATE TABLE IF NOT EXISTS `score` (
   `is_stump` tinyint(4) NOT NULL,
   `is_run_out` tinyint(4) NOT NULL,
   `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `score`
+--
+
+INSERT INTO `score` (`sid`, `match_id`, `team_id`, `player_id`, `inning`, `over`, `ball`, `run`, `is_six`, `is_four`, `wicket`, `is_catch`, `is_stump`, `is_run_out`, `created_on`) VALUES
+(1, 15, 1, 1, 1, '2.0000000000', 2, 0, 0, 0, 0, 0, 0, 0, '2017-06-14 10:20:14'),
+(2, 15, 1, 1, 1, '2.0000000000', 2, 0, 0, 0, 0, 0, 0, 0, '2017-06-14 10:21:13'),
+(3, 15, 1, 1, 1, '1.0000000000', 2, 0, 0, 0, 0, 0, 0, 0, '2017-06-14 10:23:02'),
+(4, 15, 1, 1, 1, '1.0000000000', 2, 0, 0, 0, 0, 0, 0, 0, '2017-06-14 10:23:19'),
+(5, 15, 1, 1, 1, '1.0000000000', 1, 1, 0, 0, 0, 0, 0, 0, '2017-06-14 11:38:33'),
+(6, 15, 1, 20, 1, '2.0000000000', 3, 5, 0, 0, 0, 0, 0, 0, '2017-06-14 11:57:18'),
+(7, 15, 1, 20, 1, '1.0000000000', 2, 5, 0, 0, 0, 0, 0, 0, '2017-06-14 13:06:04');
 
 -- --------------------------------------------------------
 
@@ -53012,8 +53067,8 @@ CREATE TABLE IF NOT EXISTS `team` (
 --
 
 INSERT INTO `team` (`tid`, `team_name`, `team_logo`, `country`, `state`, `city`, `captain`, `vice_captain`, `created_on`) VALUES
-(1, 'demo', 0x64656d6f, '0', '0', '0', '20', '28', '2017-05-11 11:17:16'),
-(2, 'demo1', 0x64656d6f31, '0', '0', '0', '22', '25', '2017-05-30 19:17:29'),
+(1, 'demo', 0x64656d6f, 'India', 'Rajasthan', 'Abu Road', '20', '28', '2017-06-09 11:13:10'),
+(2, 'demo1', 0x64656d6f31, 'India', 'Rajasthan', 'Abu Road', '22', '25', '2017-06-09 11:13:14'),
 (5, 'successful team', 0x6c6f676f2e706e67, 'India', 'Rajasthan', 'Abu Road', '', '', '2017-06-01 07:54:07');
 
 -- --------------------------------------------------------
@@ -53026,7 +53081,14 @@ CREATE TABLE IF NOT EXISTS `teams_of_tournament` (
   `id` int(11) NOT NULL,
   `team_id` int(11) NOT NULL,
   `tournament_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `teams_of_tournament`
+--
+
+INSERT INTO `teams_of_tournament` (`id`, `team_id`, `tournament_id`) VALUES
+(1, 1, 94);
 
 -- --------------------------------------------------------
 
@@ -53039,7 +53101,7 @@ CREATE TABLE IF NOT EXISTS `team_players` (
   `player_id` int(11) NOT NULL,
   `team_id` int(11) NOT NULL,
   `created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `team_players`
@@ -53067,7 +53129,11 @@ INSERT INTO `team_players` (`intId`, `player_id`, `team_id`, `created_on`) VALUE
 (27, 20, 1, '2017-06-01 14:27:38'),
 (28, 26, 1, '2017-06-01 14:27:41'),
 (29, 31, 1, '2017-06-01 14:41:30'),
-(30, 32, 1, '2017-06-01 14:41:35');
+(30, 32, 1, '2017-06-01 14:41:35'),
+(31, 33, 2, '2017-06-01 13:24:08'),
+(32, 20, 2, '2017-06-01 14:02:38'),
+(33, 26, 2, '2017-06-01 14:27:41'),
+(34, 20, 2, '2017-06-01 14:27:38');
 
 -- --------------------------------------------------------
 
@@ -53080,26 +53146,28 @@ CREATE TABLE IF NOT EXISTS `tournament` (
   `tour_name` varchar(100) NOT NULL,
   `tour_banner` varchar(100) NOT NULL,
   `tour_sponser` varchar(100) NOT NULL,
+  `place` varchar(255) NOT NULL,
   `teams` text NOT NULL,
   `tour_start_date` varchar(100) NOT NULL,
   `tour_end_date` varchar(100) NOT NULL,
   `team_count` int(11) NOT NULL,
   `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tournament`
 --
 
-INSERT INTO `tournament` (`intId`, `tour_name`, `tour_banner`, `tour_sponser`, `teams`, `tour_start_date`, `tour_end_date`, `team_count`, `created_on`) VALUES
-(1, 'ranji', '', 'tpppp', '', '12-12-2015', '2-2-2016', 0, '2017-04-25 09:55:51'),
-(15, 'ranji', '', 'tpppp', '', '13-5-2017', '22-5-2017', 0, '2017-04-25 09:55:51'),
-(16, 'ranji', '', 'tpppp', '', '3-5-2017', '31-5-2017', 0, '2017-04-25 09:55:51'),
-(90, 'amit singh', 'doctor-5.jpg', 'Bajaj moto', '', '7-06-2017', '10-06-2017', 0, '2017-05-10 05:22:56'),
-(91, 'Tomar cup', 'doctor-2.jpg', 'Bajaj moto', '', '17-06-2017', '18-06-2017', 0, '2017-05-10 05:31:49'),
-(92, 'Tomar cup', 'doctor-2.jpg', 'Bajaj moto', '', '17-06-2017', '18-06-2017', 0, '2017-05-10 05:32:09'),
-(93, 'Tomar cup', 'doctor-6.jpg', 'Bajaj moto', '', '17-06-2017', '18-06-2017', 0, '2017-05-10 05:32:48'),
-(94, 'ggggggggggg', 'logo.png', 'hhhhhhhhhhhhhh', '', '2-03-2019', '4-03-2019', 0, '2017-05-30 08:05:23');
+INSERT INTO `tournament` (`intId`, `tour_name`, `tour_banner`, `tour_sponser`, `place`, `teams`, `tour_start_date`, `tour_end_date`, `team_count`, `created_on`) VALUES
+(1, 'ranji', '', 'tpppp', '', '', '12-12-2015', '02-02-2016', 0, '2017-04-25 09:55:51'),
+(15, 'ranji', '', 'tpppp', '', '', '13-05-2017', '22-5-2017', 0, '2017-04-25 09:55:51'),
+(16, 'ranji', '', 'tpppp', '', '', '03-05-2017', '31-05-2017', 0, '2017-04-25 09:55:51'),
+(90, 'amit singh', 'doctor-5.jpg', 'Bajaj moto', '', '', '7-06-2017', '10-06-2017', 0, '2017-05-10 05:22:56'),
+(91, 'Tomar cup', 'doctor-2.jpg', 'Bajaj moto', '', '', '17-06-2017', '18-06-2017', 0, '2017-05-10 05:31:49'),
+(92, 'Tomar cup', 'doctor-2.jpg', 'Bajaj moto', '', '', '17-06-2017', '18-06-2017', 0, '2017-05-10 05:32:09'),
+(93, 'Tomar cup', 'doctor-6.jpg', 'Bajaj moto', '', '', '17-06-2017', '18-06-2017', 0, '2017-05-10 05:32:48'),
+(94, 'ggggggggggg', 'logo.png', 'hhhhhhhhhhhhhh', '', '', '02-03-2019', '04-03-2019', 0, '2017-05-30 08:05:23'),
+(95, 'dfdf', 'logo.png', 'aaa', 'Bahror', '', '5-04-2019', '3-04-2019', 0, '2017-06-13 07:01:57');
 
 -- --------------------------------------------------------
 
@@ -53285,12 +53353,12 @@ ALTER TABLE `filder_score`
 -- AUTO_INCREMENT for table `matches`
 --
 ALTER TABLE `matches`
-  MODIFY `intId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+  MODIFY `intId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `match_parameter`
 --
 ALTER TABLE `match_parameter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
 --
 -- AUTO_INCREMENT for table `match_score`
 --
@@ -53300,12 +53368,12 @@ ALTER TABLE `match_score`
 -- AUTO_INCREMENT for table `players`
 --
 ALTER TABLE `players`
-  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT for table `score`
 --
 ALTER TABLE `score`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `states`
 --
@@ -53320,17 +53388,17 @@ ALTER TABLE `team`
 -- AUTO_INCREMENT for table `teams_of_tournament`
 --
 ALTER TABLE `teams_of_tournament`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `team_players`
 --
 ALTER TABLE `team_players`
-  MODIFY `intId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+  MODIFY `intId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `tournament`
 --
 ALTER TABLE `tournament`
-  MODIFY `intId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=95;
+  MODIFY `intId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=96;
 --
 -- AUTO_INCREMENT for table `users`
 --
