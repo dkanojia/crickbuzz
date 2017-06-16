@@ -207,7 +207,7 @@ class Score_model extends CI_Model {
 
     	$ii = 0;
 	   	
-	   	foreach($data as $value1){
+	   	foreach($data as $value){
 			$ii++;	
 		}
 
@@ -217,36 +217,104 @@ class Score_model extends CI_Model {
      function setPlayerScore($is_exist,$data){
     	
     	if($is_exist == 1){
-			$this->db->insert('score' , $data);
-    	}
-		else{
-			$pl_id = $bt_score_data['player_id'];
-			$mch_id = $bt_score_data['match_id'];
-			$run = $bt_score_data['run'];
-			$ball = $bt_score_data['ball'];
-			$four_count = $bt_score_data['four_count'];
-			$six_count = $bt_score_data['six_count'];
+    		$pl_id = $data['player_id'];
+			$mch_id = $data['match_id'];
+			$run = $data['run'];
+			$ball = $data['ball'];
+			$four_count = $data['four_count'];
+			$six_count = $data['six_count'];
 			
 
-			$this->db->where('player_id', $pid);
-			$this->db->set('player_id', $pid);       
-			$this->db->set('match_id', $mch_id);       
-			$this->db->set('run', $run);       
-			$this->db->set('ball', $ball);       
-			$this->db->set('four_count', $four_count);       
-			$this->db->set('six_count', $six_count);       
-			$this->db->update('batsman_score');
+			$this->db->select('*');
+	    	$this->db->from('batsman_score');
+	    	$this->db->where('player_id', $pl_id);
 
+	    	$query = $this->db->get();
+	    	$data = $query->result_array();
 
+	    	$ii = 0;
+		   	
+		   	foreach($data as $value){
+				$total_ball = $ball + $value['ball'];
+				$total_run = $run + $value['run'];
+				$total_four_count = $four_count + $value['four_count'];
+				$total_six_count = $six_count + $value['six_count'];
 
-			$name = $data['name'];
-			$battingStyle = $data['battingStyle'];
-			$bowlingStyle = $data['bowlingStyle'];
-			$this->db->where('pid', $id);
-			$this->db->set('name' , $name);
-			$this->db->set('bat' , $battingStyle);
-			$this->db->set('bowler' , $bowlingStyle);
-			$this->db->update('players');   
+				$this->db->where('player_id', $pl_id);
+				$this->db->set('player_id', $pl_id);       
+				$this->db->set('match_id', $mch_id);       
+				$this->db->set('run', $total_run);       
+				$this->db->set('ball', $total_ball);       
+				$this->db->set('four_count', $total_four_count);       
+				$this->db->set('six_count', $total_six_count);       
+				$this->db->update('batsman_score');
+			}
+    	}
+		else{
+			$this->db->insert('batsman_score' , $data);
+		}
+    }
+
+     function getBowlerScore($pid){
+    	$this->db->select('*');
+    	$this->db->from('bowler_score');
+    	$this->db->where('player_id', $pid);
+
+    	$query = $this->db->get();
+    	$data = $query->result_array();
+
+    	$ii = 0;
+	   	
+	   	foreach($data as $value){
+			$ii++;	
+		}
+
+		return $ii;
+    }
+
+     function setBowlerScore($is_exist,$data){
+    	
+    	if($is_exist == 1){
+
+			$pl_id = $data['player_id'];
+			$mch_id = $data['match_id'];
+			$wicket = $data['wicket'];
+			$over = $data['over'];
+			$ball = $data['ball'];
+			$economy_rate = $data['economy_rate'];
+			$hattrick_count = $data['hattrick_count'];
+    		
+			$this->db->select('*');
+	    	$this->db->from('bowler_score');
+	    	$this->db->where('player_id', $pl_id);
+
+	    	$query = $this->db->get();
+	    	$data = $query->result_array();
+
+	    	$ii = 0;
+
+		   	foreach($data as $value){
+		   		$over = $value['over'];
+
+		   		// $effective_economy_rate = $economy_rate/$over;
+		   		$total_wicket = $wicket + $value['wicket'];
+		   		$total_ball = $ball + $value['ball'];
+		   		$avail_ball = $value['ball'];
+		   		// $over = $avail_ball % 6;
+
+				$this->db->where('player_id', $pl_id);
+				$this->db->set('player_id', $pl_id);       
+				$this->db->set('match_id', $mch_id);       
+				$this->db->set('wicket', $wicket);       
+				$this->db->set('over', $over);       
+				$this->db->set('ball', $ball);       
+				$this->db->set('economy_rate', $economy_rate);       
+				$this->db->set('hattrick_count', $hattrick_count);       
+				$this->db->update('bowler_score');
+			}
+    	}
+		else{
+			$this->db->insert('bowler_score' , $data);
 		}
     }
 	

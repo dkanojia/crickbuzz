@@ -242,18 +242,22 @@ class Score extends CI_Controller {
 		$score_data['match_id'] = $id;
 		$score_data['team_id'] =  $tid;
 		$bt_id =  $this->input->post('batsman_list');
+		
 		$score_data['player_id'] =  $bt_id;
 		$score_data['inning'] =  $in_value;
-		$score_data['over'] =  $this->input->post('quant[2]');
+		
+		$over =  $this->input->post('quant[2]');
+		$score_data['over'] = $over;
+
 		$ball_no = $this->input->post('quant[1]');
 		$score_data['ball'] =  $ball_no;
 
 		$run = $this->input->post('score_value');
 		$score_data['run'] = $run;
 
-		// $extra_run = $this->input->post('extra_run');
-		// $bowler_id = $this->input->post('bowler_list');
-		// $p_status = $this->input->post('p_staus_name');
+		$extra_run = $this->input->post('extra_run');
+		$bowler_id = $this->input->post('bowler_list');
+		$p_status = $this->input->post('p_staus_name');
 
 		$is_six = 0;
 		$is_four = 0;
@@ -263,11 +267,17 @@ class Score extends CI_Controller {
 		$is_catch = 0;
 		$is_run_out = 0;
 
-		if($run == 6)
+		$four_count = 0;
+		$six_count = 0;
+
+		if($run == 6){
 			$is_six = 1;
-		elseif($run == 4)
+			$six_count = 1;
+		}
+		elseif($run == 4){
 			$is_four = 1;
-		elseif($run == 0){
+			$four_count = 1;
+		}elseif($run == 0){
 
 		}
 
@@ -282,16 +292,39 @@ class Score extends CI_Controller {
 	    $this->score_model->setscore($score_data);
 
 	    $player_score = $this->score_model->getPlayerScore($bt_id);
-	    echo $player_score;
-	    exit;
+
 		// // Batsman Score
 		$bt_score_data['player_id'] =  $bt_id;
 		$bt_score_data['match_id'] =  $id;
 		$bt_score_data['run'] =  $run;
-		$bt_score_data['ball'] =  $total_ball;
-		$bt_score_data['four_count'] =  $this->input->post();
-		$bt_score_data['six_count'] =  $this->input->post();
-		
+		$bt_score_data['ball'] =  1;
+		$bt_score_data['four_count'] =  $four_count;
+		$bt_score_data['six_count'] =  $six_count;
+
+		$this->score_model->setPlayerScore($player_score,$bt_score_data);
+
+		$this->score_model->getBowlerScore($bowler_id);
+
+		// // Bowler Score
+		if($p_status == 1){
+			$wicket = 1;
+		}else{
+			$wicket = 0;
+		}
+
+		// $economy_rate = 0;
+		$hattrick_count = 0;
+
+		$bw_score_data['player_id'] =  $bowler_id;
+		$bw_score_data['match_id'] =  $id;
+		$bw_score_data['wicket'] =  $wicket;
+		$bw_score_data['over'] =  $over;
+		$bw_score_data['ball'] =  $ball_no;
+		$bw_score_data['economy_rate'] =  $run;
+		$bw_score_data['hattrick_count'] =  $hattrick_count;
+
+		$this->score_model->setBowlerScore($player_score, $bw_score_data);
+
 		// Filder Score
 		// $f_score_data['player_id'] =  $this->input->post();
 		// $f_score_data['match_id'] =  $this->input->post();
@@ -299,15 +332,6 @@ class Score extends CI_Controller {
 		// $f_score_data['total_run_out'] =  $this->input->post();
 
 
-		// // Bowler Score
-		// $bw_score_data['intId'] =  $this->input->post();
-		// $bw_score_data['player_id'] =  $this->input->post();
-		// $bw_score_data['match_id'] =  $this->input->post();
-		// $bw_score_data['wicket'] =  $this->input->post();
-		// $bw_score_data['over'] =  $this->input->post();
-		// $bw_score_data['ball'] =  $this->input->post();
-		// $bw_score_data['economy_rate'] =  $this->input->post();
-		// $bw_score_data['hattrick_count'] =  $this->input->post();
 
 		// Match Score 
 		// $mtch_score_data['id'] =  $this->input->post();
